@@ -1,0 +1,13 @@
+.custom-input{
+    width: 60vw;
+}
+i{
+    margin-right: 3vw;
+    color:  rgb(16, 16, 16);
+}
+.tcg-type{
+    color: white;
+}
+.tcgs, .btn{
+    background-color: rgb(16, 16, 16) !important;
+}
