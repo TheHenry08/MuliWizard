@@ -19,7 +19,6 @@ export class PlantillaBaseComponent implements AfterViewInit {
         boton.classList.remove('text-dark');  // Eliminar la clase text-dark
         boton.classList.remove('bg-light');   // Eliminar la clase bg-light
         boton.classList.add('text-light');    // Agregar la clase text-light
-        boton.classList.add('bg-black');      // Agregar la clase bg-black
       });
       boton.addEventListener('mouseover', () => {
         boton.classList.remove('text-light');  // Eliminar la clase text-light si existe

@@ -5,9 +5,12 @@ i{
     margin-right: 3vw;
     color:  rgb(16, 16, 16);
 }
-.tcg-type{
+.tcg-type, .btn{
     color: white;
 }
-.tcgs{
-    background-color: rgb(16, 16, 16) !important;
+.tcgs, .btn{
+    background-color: rgb(16, 16, 16);
+}
+#logo{
+    width: 35% !important;
 }
