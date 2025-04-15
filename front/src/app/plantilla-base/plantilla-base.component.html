@@ -1,29 +1,76 @@
-<nav class="navbar navbar-expand-lg bg-primary fw-bold sticky-top">
-    <div class="container-fluid">
-      <a class="navbar-brand w-50" href="">
-        <img id="logo" src="images/logo.png" alt="Logo" class="ms-4 img-fluid ms-auto">
-        <span class="fs-5">MulliWizards</span>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form class="d-flex me-5" role="search">
-          <input class="form-control me-2 custom-input" type="search" placeholder="Buscador mágico" aria-label="Search">
-          <button #myButton class="btn" type="submit">Buscar</button>
-        </form>
-      </div>
-      <a href="" class="text-decoration-none"><i #myLink class="fa-solid fa-user fs-4"></i></a>
-      <a href="" class="text-decoration-none"><i #myLink class="fa-solid fa-cart-shopping fs-4"></i></a>
+<nav class="navbar navbar-expand-lg fw-bold sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand w-50" href="">
+      <img id="logo" src="images/logo.png" alt="Logo" class="ms-4 img-fluid ms-auto">
+      <span class="fs-5">MulliWizards</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <form class="d-flex me-5" role="search">
+        <input class="form-control me-2 custom-input" type="search" placeholder="Buscador mágico" aria-label="Search">
+        <button #myButton class="btn" type="submit">Buscar</button>
+      </form>
     </div>
-  </nav>
-    <ul class="tcgs d-flex justify-content-around w-100 list-unstyled mb-3 fw-bold fs-5 p-2">
-      <li><a #myLink class="tcg-type text-decoration-none" href="">Magic: The Gathering</a></li>
-      <li><a #myLink class="tcg-type text-decoration-none" href="">Yu Gi Oh</a></li>
-      <li><a #myLink class="tcg-type text-decoration-none" href="">Pokemon</a></li>
-      <li><a #myLink class="tcg-type text-decoration-none" href="">Lorcana</a></li>
-      <li><a #myLink class="tcg-type text-decoration-none" href="">Star Wars</a></li>
-      <li><a #myLink class="tcg-type text-decoration-none" href="">One Piece</a></li>
-    </ul>
-  <a href=""><i class="bubble fa-regular fa-comments fs-3 bg-primary rounded-circle p-2  shadow chat position-fixed bottom-3 end-3 text-black"></i></a>
-  
+    <a href="" class="text-decoration-none"><i #myLink class="fa-solid fa-user fs-4"></i></a>
+    <a href="" class="text-decoration-none"><i #myLink class="fa-solid fa-cart-shopping fs-4"></i></a>
+  </div>
+</nav>
+<ul class="tcgs d-flex justify-content-around list-unstyled fw-bold fs-5 p-2">
+  <li><a #myLink class="tcg-type text-decoration-none" href="">Magic: The Gathering</a></li>
+  <li><a #myLink class="tcg-type text-decoration-none" href="">Yu Gi Oh</a></li>
+  <li><a #myLink class="tcg-type text-decoration-none" href="">Pokemon</a></li>
+  <li><a #myLink class="tcg-type text-decoration-none" href="">Lorcana</a></li>
+  <li><a #myLink class="tcg-type text-decoration-none" href="">Star Wars</a></li>
+  <li><a #myLink class="tcg-type text-decoration-none" href="">One Piece</a></li>
+</ul>
+
+<ng-content></ng-content>
+
+<footer class="bg-black text-white pt-5 pb-4">
+  <div class="container text-md-left">
+    <div class="row text-md-left">
+      
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+        <h5 class="text-uppercase mb-4 font-weight-bold text-warning social fw-bold">Productos</h5>
+        <p><a href="#" class="text-white" style="text-decoration: none;">Producto 1</a></p>
+        <p><a href="#" class="text-white" style="text-decoration: none;">Producto 2</a></p>
+        <p><a href="#" class="text-white" style="text-decoration: none;">Producto 3</a></p>
+      </div>
+
+      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+        <h5 class="text-uppercase mb-4 font-weight-bold text-warning social fw-bold">Enlaces útiles</h5>
+        <p><a href="#" class="text-white" style="text-decoration: none;">Tu cuenta</a></p>
+        <p><a href="#" class="text-white" style="text-decoration: none;">Ayuda</a></p>
+        <p><a href="#" class="text-white" style="text-decoration: none;">Soporte</a></p>
+      </div>
+
+      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+        <h5 class="text-uppercase mb-4 font-weight-bold social fw-bold">Contacto</h5>
+        <p><i class="fas fa-location-dot fs-5 mr-3 social"></i> Madrid, España</p>
+        <p><i class="fas fa-envelope mr-3 fs-5 social"></i> <span class="mail">{{'mulliwizards.support@gmail.com'}}</span></p>
+        <p><i class="fas fa-phone mr-3 fs-5 social"></i> +612 123 900</p>
+      </div>
+
+    </div>
+
+    <hr class="mb-4">
+
+    <div class="row align-items-center">
+      <div class="col-md-7 col-lg-8">
+        <p>© 2025 Todos los derechos reservados:
+          <a href="index.html" class="text-primary" style="text-decoration: none;"><strong> MulliWizards.com</strong></a>
+        </p>
+      </div>
+
+      <div class="col-md-5 col-lg-4">
+        <div class="text-center text-md-right">
+          <a href="#" class="text-white me-4"><i class="social fs-4 fab fa-facebook-f"></i></a>
+          <a href="#" class="text-white me-4"><i class="text-primary fs-4 fab fa-twitter"></i></a>
+          <a href="#" class="text-white me-4"><i class="instagram-text fs-4 fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

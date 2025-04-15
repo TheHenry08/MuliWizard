@@ -1,3 +1,17 @@
-[class^="side"] {
-    height: 60vh;
-  }
+.carousel-item img {
+  max-height: 150px; /* o el valor que necesites */
+  object-fit: cover;
+  width: 100%;
+}
+#carouselExample{
+  margin-top: 0;
+}
+.text-shadow{
+  font-weight: bold; /* Puedes hacer el texto más grueso si lo deseas */
+  color: white; /* Color del texto */
+  text-shadow: 
+    2px 2px 0px #000,   /* Borde superior e izquierdo */
+    -2px -2px 0px #000, /* Borde inferior y derecho */
+    2px -2px 0px #000,  /* Borde inferior izquierdo */
+    -2px 2px 0px #000;  /* Borde superior derecho */
+}

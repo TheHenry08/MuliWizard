@@ -8,9 +8,27 @@ i{
 .tcg-type, .btn{
     color: white;
 }
-.tcgs, .btn{
-    background-color: rgb(16, 16, 16);
+.tcgs, .btn, footer{
+    background-color: rgb(16, 16, 16) !important;
 }
 #logo{
     width: 35% !important;
 }
+.navbar,.bubble{
+    background-color: #112c80 !important;
+}
+.social{
+    color: #112c80 !important;
+}
+.instagram-text {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+  }
+  .mail{
+    font-size: 2vh;
+  }
+  ul {
+    margin-bottom: 0;
+  }
