@@ -32,3 +32,6 @@ i{
   ul {
     margin-bottom: 0;
   }
+  .content-wrapper {
+    padding-top: 130px; /* Ajusta según la altura real del nav + ul */
+  }
