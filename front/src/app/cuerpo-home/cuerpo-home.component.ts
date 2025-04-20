@@ -18,34 +18,81 @@ import { CommonModule } from '@angular/common';
 })
 export class CuerpoHomeComponent implements AfterViewInit {
   @ViewChild('offers') offers!: ElementRef;
-
+  @ViewChild('latest') latest!: ElementRef;
   private productosService = inject(ProductosService);
-  private renderer = inject(Renderer2);
 
   productos: any[] = [];
 
   constructor() {
     this.productosService.getProductos().subscribe((data) => {
       this.productos = data;
-      this.mostrarProductosEnOfertas();
+      this.mostrarProductosEnOferta();
+      this.mostrarLanzamientos();
     });
   }
 
   ngAfterViewInit(): void {}
 
-  mostrarProductosEnOfertas(): void {
-    if (!this.offers) return;
+  mostrarProductosEnOferta(): void {
+    const divOfertas = this.offers.nativeElement;
+    divOfertas.innerHTML = ''; 
 
-    const contenedor = this.offers.nativeElement;
+    //Variable provisional
+    let contador = 0;
 
-    for (let i = 0; i < this.productos.length; i++) {
-      const nombre = this.productos[i].nombre;
+    for (let producto of this.productos) {
 
-      const p = this.renderer.createElement('p');
-      const texto = this.renderer.createText(nombre);
+      if(contador < 4){
+      const card = document.createElement('div');
+      card.className = 'card mb-3';
+      card.style.maxWidth = '540px';
+  
+        card.innerHTML = `
+        <div class="card" style="width: 15rem; height: 28rem">
+          <img src="images/logo.png" class="card-img-top" alt="${producto.nombre}">
+          <div class="card-body bg-dark text-white">
+            <h5 class="card-title">${producto.nombre}</h5>
+            <p class="card-text">€${producto.precio}</p>
+            <p class="card-text">${producto.estado}</p>
+            <a href="#" class="btn btn-primary">Comprar</a>
+          </div>
+        </div>
+      `;
+      
+      divOfertas.appendChild(card);
+      contador++;
+      }
+    }
+  }
+  mostrarLanzamientos(){
+    const divLanzamientos = this.latest.nativeElement;
+    divLanzamientos.innerHTML = ''; 
 
-      this.renderer.appendChild(p, texto);
-      this.renderer.appendChild(contenedor, p);
+    //Variable provisional
+    let contador = 0;
+
+    for (let producto of this.productos) {
+
+      if(contador < 4){
+      const card = document.createElement('div');
+      card.className = 'card mb-3';
+      card.style.maxWidth = '540px';
+  
+        card.innerHTML = `
+        <div class="card" style="width: 15rem; height: 28rem">
+          <img src="images/logo.png" class="card-img-top" alt="${producto.nombre}">
+          <div class="card-body bg-dark text-white">
+            <h5 class="card-title">${producto.nombre}</h5>
+            <p class="card-text">€${producto.precio}</p>
+            <p class="card-text">${producto.estado}</p>
+            <a href="#" class="btn btn-primary">Comprar</a>
+          </div>
+        </div>
+      `;
+      
+      divLanzamientos.appendChild(card);
+      contador++;
+      }
     }
   }
 }

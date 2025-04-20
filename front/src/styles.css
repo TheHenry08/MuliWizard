@@ -2,7 +2,7 @@
 body {
     background-image: url("assets/images/fondo.jpg"); /* Ruta de la imagen */
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     backdrop-filter: blur(35px);
     height: 100vh;
     margin: 0;
