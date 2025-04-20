@@ -2,6 +2,7 @@ import { Component, ViewChildren, ViewChild ,QueryList, ElementRef, AfterViewIni
 
 @Component({
   selector: 'app-plantilla-base',
+  standalone: true,
   imports: [],
   templateUrl: './plantilla-base.component.html',
   styleUrl: './plantilla-base.component.css'

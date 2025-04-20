@@ -4,6 +4,7 @@ import { CuerpoHomeComponent } from './cuerpo-home/cuerpo-home.component'
 
 @Component({
   selector: 'app-root',
+  standalone:true,
   imports: [PlantillaBaseComponent,CuerpoHomeComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
