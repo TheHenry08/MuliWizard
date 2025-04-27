@@ -42,13 +42,13 @@ export class CuerpoHomeComponent implements AfterViewInit {
 
     for (let producto of this.productos) {
 
-      if(contador < 4){
+      if(contador < 10){
       const card = document.createElement('div');
       card.className = 'card mb-3';
       card.style.maxWidth = '540px';
   
         card.innerHTML = `
-        <div class="card" style="width: 15rem; height: 28rem">
+        <div class="card" style="width: 14rem; height: 27rem">
           <img src="images/logo.png" class="card-img-top" alt="${producto.nombre}">
           <div class="card-body bg-dark text-white">
             <h5 class="card-title">${producto.nombre}</h5>
@@ -79,7 +79,7 @@ export class CuerpoHomeComponent implements AfterViewInit {
       card.style.maxWidth = '540px';
   
         card.innerHTML = `
-        <div class="card" style="width: 15rem; height: 28rem">
+        <div class="card" style="width: 14rem; height: 27rem">
           <img src="images/logo.png" class="card-img-top" alt="${producto.nombre}">
           <div class="card-body bg-dark text-white">
             <h5 class="card-title">${producto.nombre}</h5>
