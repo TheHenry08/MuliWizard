@@ -31,7 +31,7 @@ export class CuerpoHomeComponent implements AfterViewInit {
     });
   }
 
-  ngAfterViewInit(): void {}
+  ngAfterViewInit(): void { console.log('ngAfterViewInit en PlantillaBaseComponent');}
 
   mostrarProductosEnOferta(): void {
     const divOfertas = this.offers.nativeElement;
@@ -41,13 +41,27 @@ export class CuerpoHomeComponent implements AfterViewInit {
     let contador = 0;
 
     for (let producto of this.productos) {
-
       if(contador < 10){
       const card = document.createElement('div');
-      card.className = 'card mb-3';
-      card.style.maxWidth = '540px';
-  
+      let iconoEstado :string = this.loadIcons(producto.estado);
         card.innerHTML = `
+        <div class="card mb-3" style="max-width: 36vw;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="images/logo.png" class="img-fluid rounded-start" alt="${producto.nombre}">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body bg-dark text-white">
+                <h5 class="card-title">${producto.nombre}</h5>
+                <p class="card-text">€${producto.precio}</p>
+                <p class="card-text">${iconoEstado}${producto.estado}</p>
+                <button class="btn btn-primary">Comprar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        `;
+        /*card.innerHTML = `
         <div class="card" style="width: 14rem; height: 27rem">
           <img src="images/logo.png" class="card-img-top" alt="${producto.nombre}">
           <div class="card-body bg-dark text-white">
@@ -57,7 +71,7 @@ export class CuerpoHomeComponent implements AfterViewInit {
             <a href="#" class="btn btn-primary">Comprar</a>
           </div>
         </div>
-      `;
+      `;*/
       
       divOfertas.appendChild(card);
       contador++;
@@ -75,24 +89,48 @@ export class CuerpoHomeComponent implements AfterViewInit {
 
       if(contador < 4){
       const card = document.createElement('div');
-      card.className = 'card mb-3';
-      card.style.maxWidth = '540px';
-  
-        card.innerHTML = `
-        <div class="card" style="width: 14rem; height: 27rem">
-          <img src="images/logo.png" class="card-img-top" alt="${producto.nombre}">
-          <div class="card-body bg-dark text-white">
-            <h5 class="card-title">${producto.nombre}</h5>
-            <p class="card-text">€${producto.precio}</p>
-            <p class="card-text">${producto.estado}</p>
-            <a href="#" class="btn btn-primary">Comprar</a>
+      let iconoEstado = this.loadIcons(producto.estado);
+      card.innerHTML = `
+        <div class="card mb-3" style="max-width: 36vw;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="images/logo.png" class="img-fluid rounded-start" alt="${producto.nombre}">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body bg-dark text-white">
+                <h5 class="card-title">${producto.nombre}</h5>
+                <p class="card-text">€${producto.precio}</p>
+                <p class="card-text">${iconoEstado}${producto.estado}</p>
+                <button class="btn btn-primary">Comprar</button>
+              </div>
+            </div>
           </div>
-        </div>
+        </div>  
       `;
       
       divLanzamientos.appendChild(card);
       contador++;
       }
     }
+  }
+  loadIcons(estado :string){
+    let iconoEstado = '';
+    switch(estado.toLowerCase()) {
+      case 'nueva':
+        iconoEstado = '🆕';
+        break;
+      case 'usada - excelente':
+        iconoEstado = '✨';
+        break;
+      case 'usada - buena':
+        iconoEstado = '🛠️';
+        break;
+      case 'usada - regular':
+        iconoEstado = '⚠️';
+        break;
+      default:
+        iconoEstado = 'ℹ️';
+    }
+    return iconoEstado;
   }
 }

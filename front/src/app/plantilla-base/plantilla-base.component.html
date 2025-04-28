@@ -1,6 +1,6 @@
 <nav id="navegacion" class="navbar navbar-expand-lg fw-bold">
   <div class="container-fluid">
-    <a class="navbar-brand w-50" href="">
+    <a class="navbar-brand w-50" [routerLink]="['/']">
       <img id="logo" src="images/logo.png" alt="Logo" class="ms-4 img-fluid ms-auto">
       <span class="fs-5">MulliWizards</span>
     </a>
@@ -13,7 +13,7 @@
         <button #myButton class="btn" type="submit">Buscar</button>
       </form>
     </div>
-    <a href="" class="text-decoration-none"><i #myLink class="fa-solid fa-user fs-4"></i></a>
+    <a [routerLink]="['/prueba']" class="text-decoration-none"><i #myLink class="fa-solid fa-user fs-4"></i></a>
     <a href="" class="text-decoration-none"><i #myLink class="fa-solid fa-cart-shopping fs-4"></i></a>
   </div>
 </nav>
@@ -26,7 +26,8 @@
   <li><a #myLink class="tcg-type text-decoration-none" href="">One Piece</a></li>
 </ul>
 
-<ng-content></ng-content>
+<router-outlet></router-outlet>
+
 
 <footer class="bg-black text-white pt-5 pb-4">
   <div class="container text-md-left">

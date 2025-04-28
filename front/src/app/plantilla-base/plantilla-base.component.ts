@@ -1,9 +1,9 @@
 import { Component, ViewChildren, ViewChild ,QueryList, ElementRef, AfterViewInit } from '@angular/core';
-
+import { RouterModule } from '@angular/router'
 @Component({
   selector: 'app-plantilla-base',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './plantilla-base.component.html',
   styleUrl: './plantilla-base.component.css'
 })
@@ -17,15 +17,15 @@ export class PlantillaBaseComponent implements AfterViewInit {
     if(boton){
       console.log("Botón encontrado:", boton);
       boton.addEventListener('mouseout', () => {
-        boton.classList.remove('text-dark');  // Eliminar la clase text-dark
-        boton.classList.remove('bg-light');   // Eliminar la clase bg-light
-        boton.classList.add('text-light');    // Agregar la clase text-light
+        boton.classList.remove('text-dark');  
+        boton.classList.remove('bg-light');   
+        boton.classList.add('text-light');   
       });
       boton.addEventListener('mouseover', () => {
-        boton.classList.remove('text-light');  // Eliminar la clase text-light si existe
-        boton.classList.remove('bg-black');   // Eliminar la clase bg-black si existe
-        boton.classList.add('text-dark');     // Agregar la clase text-dark
-        boton.classList.add('bg-light');      // Agregar la clase bg-light
+        boton.classList.remove('text-light'); 
+        boton.classList.remove('bg-black');   
+        boton.classList.add('text-dark');     
+        boton.classList.add('bg-light');      
       });
     }
     this.links.forEach((link) => {
