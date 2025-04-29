@@ -32,8 +32,8 @@ export class CuerpoHomeComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void { console.log('ngAfterViewInit en PlantillaBaseComponent');}
-
-  mostrarProductosEnOferta(): void {
+  
+  mostrarProductosEnOferta() {
     const divOfertas = this.offers.nativeElement;
     divOfertas.innerHTML = ''; 
 
@@ -42,19 +42,19 @@ export class CuerpoHomeComponent implements AfterViewInit {
 
     for (let producto of this.productos) {
       if(contador < 10){
-      const card = document.createElement('div');
-      let iconoEstado :string = this.loadIcons(producto.estado);
+        const card = document.createElement('div');
+        let iconoEstado :string = this.loadIcons(producto.estado);
         card.innerHTML = `
         <div class="card mb-3" style="max-width: 36vw;">
           <div class="row g-0">
             <div class="col-md-4">
-              <img src="images/logo.png" class="img-fluid rounded-start" alt="${producto.nombre}">
+              <img src="/images/logo.png" class="img-fluid rounded-start" alt="${producto.nombre}">
             </div>
             <div class="col-md-8">
               <div class="card-body bg-dark text-white">
+                <h6 class="text-secondary">${producto.expansion}</h6>
                 <h5 class="card-title">${producto.nombre}</h5>
-                <p class="card-text">€${producto.precio}</p>
-                <p class="card-text">${iconoEstado}${producto.estado}</p>
+                <p class="card-text">${producto.precio} €</p>
                 <button class="btn btn-primary">Comprar</button>
               </div>
             </div>
@@ -99,8 +99,8 @@ export class CuerpoHomeComponent implements AfterViewInit {
             <div class="col-md-8">
               <div class="card-body bg-dark text-white">
                 <h5 class="card-title">${producto.nombre}</h5>
-                <p class="card-text">€${producto.precio}</p>
-                <p class="card-text">${iconoEstado}${producto.estado}</p>
+                <h6>${producto.expansion}</h6>
+                <p class="card-text">${producto.precio} €</p>
                 <button class="btn btn-primary">Comprar</button>
               </div>
             </div>
@@ -117,16 +117,25 @@ export class CuerpoHomeComponent implements AfterViewInit {
     let iconoEstado = '';
     switch(estado.toLowerCase()) {
       case 'nueva':
-        iconoEstado = '🆕';
+        iconoEstado = 'MT';
         break;
-      case 'usada - excelente':
-        iconoEstado = '✨';
+      case 'casi nueva':
+        iconoEstado = 'NM';
         break;
-      case 'usada - buena':
-        iconoEstado = '🛠️';
+      case 'excelente':
+        iconoEstado = 'EX';
         break;
-      case 'usada - regular':
-        iconoEstado = '⚠️';
+      case 'bien':
+        iconoEstado = 'GD';
+        break;
+      case 'poco jugada':
+        iconoEstado = 'LP';
+        break;
+      case 'jugada':
+        iconoEstado = 'PL';
+        break;
+      case 'pobre':
+        iconoEstado = 'PO';
         break;
       default:
         iconoEstado = 'ℹ️';

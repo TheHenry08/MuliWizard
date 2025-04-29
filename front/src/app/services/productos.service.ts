@@ -12,4 +12,9 @@ export class ProductosService {
   getProductos(): Observable<any> {
     return this.http.get(this.apiUrl);
   }
+  getImagenProducto(id: number): Observable<Blob> {
+    return this.http.get(`${this.apiUrl}/imagen/${id}`, { 
+      responseType: 'blob' 
+    });
+  }
 }

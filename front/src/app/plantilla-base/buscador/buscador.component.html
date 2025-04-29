@@ -1,0 +1,20 @@
+<input
+  type="text"
+  class="form-control me-2 custom-input"
+  [(ngModel)]="searchTerm"
+  (input)="filtrarProductos()"
+  placeholder="Buscador mágico"
+  aria-label="Search"
+  autocomplete="off"
+/>
+
+<ul class="list-group position-absolute w-100 z-3" *ngIf="resultadosFiltrados.length > 0">
+  <li
+    class="list-group-item list-group-item-action"
+    *ngFor="let resultado of resultadosFiltrados"
+    (click)="seleccionarProducto(resultado)"
+  >
+    {{ resultado.nombre }}
+  </li>
+</ul>
+
