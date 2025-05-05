@@ -37,14 +37,46 @@
     <div class="col-md-6 mb-3">
       <div class="p-4 text-white border-bottom border-2">
         <h3 class="text-center mb-3 pb-1 border-bottom border-2">¡NUEVO Y CANDENTE!</h3>
-        <p #offers id="offers" class="d-flex flex-wrap overflow-auto" style="height: 30rem;"></p>
+        <div class="overflow-auto" style="max-height: 80vh;">
+          <div *ngFor="let producto of productos | slice:0:10" class="card mb-3" style="max-width: 36vw;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img [src]="'images/logo.png'" [alt]="producto.nombre" class="img-fluid rounded-start">
+              </div>
+              <div class="col-md-8">
+                <div [id]="producto.id" class="card-body bg-dark text-white" (click)="redirigirDetalle(producto)">
+                  <h6 class="text-secondary">{{ producto.expansion }}</h6>
+                  <h5 class="card-title">{{ producto.nombre }}</h5>
+                  <p class="card-text">{{ producto.precio }} €</p>
+                  <button class="btn btn-primary">Comprar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="col-md-6 mb-3">
       <div class="p-4 text-white border-bottom border-2">
         <h3 class="text-center mb-3 pb-1 border-bottom border-2 ">¡PRODUCTOS DESTACADOS!</h3>
-        <p #latest id="latest" class="d-flex flex-wrap justify-content-between overflow-auto" style="height: 30rem;"></p>
+        <div class="overflow-auto" style="max-height: 80vh;">
+          <div *ngFor="let producto of productos | slice:0:10" class="card mb-3" style="max-width: 36vw;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img [src]="'images/logo.png'" [alt]="producto.nombre" class="img-fluid rounded-start">
+              </div>
+              <div class="col-md-8">
+                <div [id]="producto.id" class="card-body bg-dark text-white" (click)="redirigirDetalle(producto)">
+                  <h6 class="text-secondary">{{ producto.expansion }}</h6>
+                  <h5 class="card-title">{{ producto.nombre }}</h5>
+                  <p class="card-text">{{ producto.precio }} €</p>
+                  <button class="btn btn-primary">Comprar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

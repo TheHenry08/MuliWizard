@@ -22,3 +22,6 @@
 #offers, #latest {
   background-color: transparent;
 }
+.card:hover{
+  cursor: pointer;
+}
