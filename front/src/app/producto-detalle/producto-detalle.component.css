@@ -1,0 +1,22 @@
+/* Estilos básicos para mejorar el aspecto de la página de detalle */
+
+.container {
+    max-width: 960px;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  button {
+    width: 100%;
+    font-size: 1.1rem;
+  }
+  
+  .spinner-border {
+    width: 3rem;
+    height: 3rem;
+    border-width: 0.4rem;
+  }
+  

@@ -61,6 +61,6 @@ export class CuerpoHomeComponent implements AfterViewInit {
   }
   redirigirDetalle(producto: any) {
     console.log('Producto clicado:', producto);
-    this.router.navigate(['/detalle', producto.nombre]);
+    this.router.navigate(['/detalle', producto.id]);
   }
 }
