@@ -41,7 +41,7 @@
           <div *ngFor="let producto of productos | slice:0:10" class="card mb-3" style="max-width: 36vw;">
             <div class="row g-0">
               <div class="col-md-4">
-                <img [src]="'images/logo.png'" [alt]="producto.nombre" class="img-fluid rounded-start">
+                <img [src]="'images/logo.png'" [alt]="producto.nombre" class="img-fluid rounded-start card-img">
               </div>
               <div class="col-md-8">
                 <div [id]="producto.id" class="card-body bg-dark text-white" (click)="redirigirDetalle(producto)">

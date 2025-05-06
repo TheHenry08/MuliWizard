@@ -22,6 +22,9 @@
 #offers, #latest {
   background-color: transparent;
 }
-.card:hover{
+.card-body:hover{
   cursor: pointer;
+}
+.card-img:hover{
+  cursor: zoom-in;
 }

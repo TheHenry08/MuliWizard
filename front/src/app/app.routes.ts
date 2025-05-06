@@ -10,7 +10,7 @@ export const routes: Routes = [
     component: PlantillaBaseComponent, // Siempre muestra la plantilla base
     children: [
       { path: '', component: CuerpoHomeComponent }, // Dentro de la plantilla base
-      { path: 'prueba', component: LoginComponent },
+      { path: 'inicio', component: LoginComponent },
       { path: 'detalle/:id', component: ProductoDetalleComponent }
     ]
   }

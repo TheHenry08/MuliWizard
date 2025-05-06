@@ -1,14 +1,16 @@
 .custom-input{
     width: 60vw;
 }
-i{
+.upper-icon{
+    transition: color 0.35s;
     margin-right: 3vw;
     color:  rgb(16, 16, 16);
 }
-.tcg-type, .btn{
+.tcg-type, .btn, .footer-link{
+    transition: color 0.35s;
     color: white;
 }
-.tcgs, .btn, footer{
+.tcgs, footer{
     background-color: rgb(16, 16, 16) !important;
 }
 #logo{
@@ -34,4 +36,28 @@ i{
   }
   .content-wrapper {
     padding-top: 130px; /* Ajusta según la altura real del nav + ul */
+  }
+  .upper-icon:hover, .tcg-type:hover, .footer-link:hover{
+    position: relative;
+    transition: color 0.35s;
+  }
+  .upper-icon:hover{
+    color:rgb(99, 99, 99)!important
+  }
+  .tcg-type:hover, .footer-link:hover{
+    color:rgb(30, 73, 201) !important
+  }
+  #name{
+    background: linear-gradient(90deg,rgb(0, 0, 0),rgb(31, 31, 31),rgb(141, 141, 141),rgb(255, 255, 255));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+  }
+  .star{
+    color:white;
+  }
+  .button-search:hover{
+    position: relative;
+    transition: color 0.35s;
+    background-color: rgb(212, 212, 212)!important
   }
