@@ -14,8 +14,8 @@
         <button (click) = "onKeyDown($event)" class="button-search bg-white rounded-end border border-light" type="submit"><i class="fa-solid fa-magnifying-glass text-black p-2"></i></button>
       </form>
     </div>
-    <a [routerLink]="['/inicio']" class="text-decoration-none"><i class="upper-icon fa-solid fa-user fs-4 text-white"></i></a>
-    <a [routerLink]="['/carrito']" class="text-decoration-none"><i class="upper-icon fa-solid fa-cart-shopping fs-4 text-white"></i></a>
+    <a [routerLink]="['/login']" class="text-decoration-none"><i #myLink class="fa-solid fa-user fs-4"></i></a>
+    <a href="" class="text-decoration-none"><i #myLink class="fa-solid fa-cart-shopping fs-4"></i></a>
   </div>
 </nav>
 <ul class="tcgs d-flex justify-content-around list-unstyled fw-bold fs-5 p-2">

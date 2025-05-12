@@ -18,9 +18,8 @@
   </div>
 
   <button type="submit" class="submit-btn" [disabled]="loginForm.invalid">Ingresar</button>
-
   <p class="register-text">
     ¿No tienes cuenta?
-    <a href="/register">Regístrate</a>
+    <a [routerLink]="['/registro']">Regístrate</a>
   </p>
 </form>
