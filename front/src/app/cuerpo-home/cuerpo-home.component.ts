@@ -6,10 +6,10 @@ import {
   ViewChild,
   Renderer2,
 } from '@angular/core';
-import { ProductosService } from '../services/productos.service';
+import { ProductosService } from '../services/productos/productos.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-
+declare var bootstrap: any;
 @Component({
   selector: 'app-cuerpo-home',
   standalone: true,
@@ -28,40 +28,17 @@ export class CuerpoHomeComponent implements AfterViewInit {
     });
   }
 
-  ngAfterViewInit(): void { console.log('ngAfterViewInit en PlantillaBaseComponent');}
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+      popoverTriggerList.forEach((popoverTriggerEl: any) => {
+        new bootstrap.Popover(popoverTriggerEl);
+      });
+    });
+  }
  
   redirigirDetalle(producto: any) {
     console.log('Producto clicado:', producto);
     this.router.navigate(['/detalle', producto.id]);
   }
 }
-/*
-loadIcons(estado :string){
-    let iconoEstado = '';
-    switch(estado.toLowerCase()) {
-      case 'nueva':
-        iconoEstado = 'MT';
-        break;
-      case 'casi nueva':
-        iconoEstado = 'NM';
-        break;
-      case 'excelente':
-        iconoEstado = 'EX';
-        break;
-      case 'bien':
-        iconoEstado = 'GD';
-        break;
-      case 'poco jugada':
-        iconoEstado = 'LP';
-        break;
-      case 'jugada':
-        iconoEstado = 'PL';
-        break;
-      case 'pobre':
-        iconoEstado = 'PO';
-        break;
-      default:
-        iconoEstado = 'ℹ️';
-    }
-    return iconoEstado;
-  }*/

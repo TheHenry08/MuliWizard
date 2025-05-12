@@ -10,8 +10,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <form class="d-flex me-5" role="search">
-        <input class="rounded-0 rounded-start p-1 ms-5 custom-input border border-end-0 border-light form-control" type="search" placeholder=" Buscador mágico" aria-label="Search">
-        <button #myButton class="button-search bg-white rounded-end border border-light" type="submit"><i class="fa-solid fa-magnifying-glass text-black p-2"></i></button>
+        <input #inputBusqueda (keydown) = "onKeyDown($event)" class="rounded-0 rounded-start p-1 ms-5 custom-input border border-end-0 border-light form-control" type="search" placeholder=" Buscador mágico" aria-label="Search">
+        <button (click) = "onKeyDown($event)" class="button-search bg-white rounded-end border border-light" type="submit"><i class="fa-solid fa-magnifying-glass text-black p-2"></i></button>
       </form>
     </div>
     <a [routerLink]="['/inicio']" class="text-decoration-none"><i class="upper-icon fa-solid fa-user fs-4 text-white"></i></a>
@@ -33,7 +33,7 @@
 </ul>
 
 <router-outlet></router-outlet>
-
+<app-chat-side></app-chat-side>
 
 <footer class="bg-black text-white pt-5 pb-4">
   <div class="container text-md-left">

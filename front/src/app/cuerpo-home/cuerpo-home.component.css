@@ -22,13 +22,15 @@
 #offers, #latest {
   background-color: transparent;
 }
-.card-body:hover{
-  cursor: pointer;
-}
+
 .card-img:hover{
   cursor: zoom-in;
 }
 .btn-card{
   color: white;
   background-color: #112c80 !important;
+}
+.custom-tooltip {
+  --bs-tooltip-bg: var(--bd-violet-bg);
+  --bs-tooltip-color: var(--bs-white);
 }
