@@ -1,16 +1,17 @@
 <nav id="navegacion" class="navbar navbar-expand-lg fw-bold">
   <div class="container-fluid">
     <a class="navbar-brand w-50" [routerLink]="['/']">
+      <span class="fs-5 text-white">MULLI </span>
       <img id="logo" src="images/logo.png" alt="Logo" class="ms-4 img-fluid ms-auto">
-      <span class="fs-5">MulliWizards</span>
+      <span class="fs-5 text-white"> WIZARDS </span>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <form class="d-flex me-5" role="search">
-        <input class="form-control me-2 custom-input" type="search" placeholder="Buscador mágico" aria-label="Search">
-        <button #myButton class="btn" type="submit">Buscar</button>
+        <input class="rounded-0 rounded-start p-1 ms-5 custom-input border border-end-0 border-light form-control" type="search" placeholder=" Buscador mágico" aria-label="Search">
+        <button #myButton class="button-search bg-white rounded-end border border-light" type="submit"><i class="fa-solid fa-magnifying-glass text-black p-2"></i></button>
       </form>
     </div>
     <a [routerLink]="['/login']" class="text-decoration-none"><i #myLink class="fa-solid fa-user fs-4"></i></a>
@@ -19,10 +20,15 @@
 </nav>
 <ul class="tcgs d-flex justify-content-around list-unstyled fw-bold fs-5 p-2">
   <li><a #myLink class="tcg-type text-decoration-none" href="">Magic: The Gathering</a></li>
+  <i class="fa-solid fa-star mt-1 star"></i>
   <li><a #myLink class="tcg-type text-decoration-none" href="">Yu Gi Oh</a></li>
+  <i class="fa-solid fa-star mt-1 star"></i>
   <li><a #myLink class="tcg-type text-decoration-none" href="">Pokemon</a></li>
+  <i class="fa-solid fa-star mt-1 star"></i>
   <li><a #myLink class="tcg-type text-decoration-none" href="">Lorcana</a></li>
+  <i class="fa-solid fa-star mt-1 star"></i>
   <li><a #myLink class="tcg-type text-decoration-none" href="">Star Wars</a></li>
+  <i class="fa-solid fa-star mt-1 star"></i>
   <li><a #myLink class="tcg-type text-decoration-none" href="">One Piece</a></li>
 </ul>
 
@@ -34,23 +40,23 @@
       
       <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
         <h5 class="text-uppercase mb-4 font-weight-bold social fw-bold">About Us</h5>
-        <p><a href="#" class="text-white" style="text-decoration: none;">Aviso legal</a></p>
-        <p><a href="#" class="text-white" style="text-decoration: none;">Puntos de reunión</a></p>
-        <p><a href="#" class="text-white" style="text-decoration: none;">Quiénes somos</a></p>
+        <p><a href="#" class="footer-link text-white" style="text-decoration: none;">Aviso legal</a></p>
+        <p><a href="#" class="footer-link text-white" style="text-decoration: none;">Puntos de reunión</a></p>
+        <p><a href="#" class="footer-link text-white" style="text-decoration: none;">Quiénes somos</a></p>
       </div>
 
       <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
         <h5 class="text-uppercase mb-4 font-weight-bold social fw-bold">Enlaces útiles</h5>
-        <p><a href="#" class="text-white" style="text-decoration: none;">Tu cuenta</a></p>
-        <p><a href="#" class="text-white" style="text-decoration: none;">Ayuda</a></p>
-        <p><a href="#" class="text-white" style="text-decoration: none;">Soporte</a></p>
+        <p><a href="#" class="footer-link text-white" style="text-decoration: none;">Tu cuenta</a></p>
+        <p><a href="#" class="footer-link text-white" style="text-decoration: none;">Ayuda</a></p>
+        <p><a href="#" class="footer-link text-white" style="text-decoration: none;">Soporte</a></p>
       </div>
 
       <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
         <h5 class="text-uppercase mb-4 font-weight-bold social fw-bold">Contacto</h5>
-        <p><i class="fas fa-location-dot fs-5 mr-3 social"></i> Madrid, España</p>
-        <p><i class="fas fa-envelope mr-3 fs-5 social"></i> <span class="mail">{{'mulliwizards.support@gmail.com'}}</span></p>
-        <p><i class="fas fa-phone mr-3 fs-5 social"></i> +612 123 900</p>
+        <p><i class="fas fa-location-dot fs-5 me-1 social"></i> Madrid, España</p>
+        <p><i class="fas fa-envelope me-2 fs-5 social"></i> <span class="mail">{{'mulliwizards.support@gmail.com'}}</span></p>
+        <p><i class="fas fa-phone me-1 fs-5 social"></i> +612 123 900</p>
       </div>
 
     </div>

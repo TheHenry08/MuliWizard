@@ -30,7 +30,13 @@ export class CuerpoHomeComponent implements AfterViewInit {
 
   ngAfterViewInit(): void { console.log('ngAfterViewInit en PlantillaBaseComponent');}
  
-  loadIcons(estado :string){
+  redirigirDetalle(producto: any) {
+    console.log('Producto clicado:', producto);
+    this.router.navigate(['/detalle', producto.id]);
+  }
+}
+/*
+loadIcons(estado :string){
     let iconoEstado = '';
     switch(estado.toLowerCase()) {
       case 'nueva':
@@ -58,9 +64,4 @@ export class CuerpoHomeComponent implements AfterViewInit {
         iconoEstado = 'ℹ️';
     }
     return iconoEstado;
-  }
-  redirigirDetalle(producto: any) {
-    console.log('Producto clicado:', producto);
-    this.router.navigate(['/detalle', producto.id]);
-  }
-}
+  }*/

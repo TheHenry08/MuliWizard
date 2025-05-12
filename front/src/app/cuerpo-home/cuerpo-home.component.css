@@ -22,6 +22,13 @@
 #offers, #latest {
   background-color: transparent;
 }
-.card:hover{
+.card-body:hover{
   cursor: pointer;
+}
+.card-img:hover{
+  cursor: zoom-in;
+}
+.btn-card{
+  color: white;
+  background-color: #112c80 !important;
 }
