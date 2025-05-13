@@ -1,6 +1,8 @@
-import { Component, ViewChildren, ViewChild ,QueryList, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, ViewChildren, ViewChild ,QueryList, ElementRef, AfterViewInit, inject } from '@angular/core';
 import { RouterModule } from '@angular/router'
 import { ChatSideComponent } from '../chat-side/chat-side.component'
+import { ProductosService } from '../services/productos/productos.service';
+import { BusquedaService } from '../services/busqueda/busqueda.service';
 
 @Component({
   selector: 'app-plantilla-base',
@@ -11,22 +13,26 @@ import { ChatSideComponent } from '../chat-side/chat-side.component'
 })
 export class PlantillaBaseComponent implements AfterViewInit {
 
-  @ViewChildren('myLink') links!: QueryList<ElementRef>;
-  @ViewChild('myButton') button!: ElementRef<HTMLButtonElement>;
   @ViewChild('inputBusqueda') input!: ElementRef<HTMLInputElement>;
+
   ngAfterViewInit() {}
 
-  onKeyDown(event: any){
+  constructor(private busquedaService: BusquedaService) {}
+
+  onKeyDown(event: KeyboardEvent | MouseEvent){
     let inputValue = this.input.nativeElement.value;
-    if(inputValue != ''){
-      if(event.key === 'Enter' && event.type === "keydown"){
-        this.onSearch(inputValue);
-      }else if(event.type === 'click'){
-        this.onSearch(inputValue);
-      }
+    //Mock
+    // event.preventDefault();
+    // inputValue = "Black Lotus";
+    //-----
+    if((event instanceof KeyboardEvent && event.key === 'Enter') || event instanceof MouseEvent){
+      this.onSearch(inputValue);
     }
+  
   }
-  onSearch(valor: String){
-    console.log(valor);
+
+  
+  onSearch(valor: string){
+    this.busquedaService.actualizarBusqueda(valor);
   }
 }

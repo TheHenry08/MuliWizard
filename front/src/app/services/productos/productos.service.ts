@@ -17,4 +17,10 @@ export class ProductosService {
       responseType: 'blob' 
     });
   }
+
+  buscarProductos(termino: string): Observable<any[]> {
+    return this.http.get<any[]>(`http://localhost:8000/api/productos`, {
+      params: { search: termino }
+    });
+  }
 }

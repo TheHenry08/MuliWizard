@@ -4,7 +4,7 @@
 .upper-icon{
     transition: color 0.35s;
     margin-right: 3vw;
-    color:  rgb(16, 16, 16);
+    color:  rgb(255, 255, 255);
 }
 .tcg-type, .btn, .footer-link{
     transition: color 0.35s;

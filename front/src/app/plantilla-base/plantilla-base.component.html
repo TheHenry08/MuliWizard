@@ -9,13 +9,13 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <form class="d-flex me-5" role="search">
+      <div class="d-flex me-5">
         <input #inputBusqueda (keydown) = "onKeyDown($event)" class="rounded-0 rounded-start p-1 ms-5 custom-input border border-end-0 border-light form-control" type="search" placeholder=" Buscador mágico" aria-label="Search">
-        <button (click) = "onKeyDown($event)" class="button-search bg-white rounded-end border border-light" type="submit"><i class="fa-solid fa-magnifying-glass text-black p-2"></i></button>
-      </form>
+        <button (click) = "onKeyDown($event)" class="button-search bg-white rounded-end border border-light"><i class="fa-solid fa-magnifying-glass text-black p-2"></i></button>
+      </div>
     </div>
-    <a [routerLink]="['/login']" class="text-decoration-none"><i #myLink class="fa-solid fa-user fs-4"></i></a>
-    <a href="" class="text-decoration-none"><i #myLink class="fa-solid fa-cart-shopping fs-4"></i></a>
+    <a [routerLink]="['/login']" class="upper-icon text-decoration-none"><i #myLink class="fa-solid fa-user fs-4"></i></a>
+    <a href="" class="upper-icon text-decoration-none"><i #myLink class="fa-solid fa-cart-shopping fs-4"></i></a>
   </div>
 </nav>
 <ul class="tcgs d-flex justify-content-around list-unstyled fw-bold fs-5 p-2">
