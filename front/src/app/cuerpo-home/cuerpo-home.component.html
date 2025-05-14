@@ -1,4 +1,4 @@
-<div #contenidoHome *ngIf="terminoActual === ''">
+
   <div id="carouselExample" class="carousel slide mb-3">
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -97,7 +97,8 @@
       </div>
     </div>
   </div>
-</div>
+
+<!--
 <div *ngIf="terminoActual !== ''" class="container my-5">
   <h4 class="text-white">Resultados de búsqueda para: "{{ terminoActual }}"</h4>
   <div *ngIf="productos.length > 0; else sinResultados">
@@ -123,3 +124,5 @@
     <p class="fs-5 text-danger">No se encontraron resultados :(</p>
   </ng-template>
 </div>
+-->
+

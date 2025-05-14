@@ -1,5 +1,6 @@
 import { Component, ViewChildren, ViewChild ,QueryList, ElementRef, AfterViewInit, inject } from '@angular/core';
 import { RouterModule } from '@angular/router'
+import { Router } from '@angular/router';
 import { ChatSideComponent } from '../chat-side/chat-side.component'
 import { ProductosService } from '../services/productos/productos.service';
 import { BusquedaService } from '../services/busqueda/busqueda.service';
@@ -17,7 +18,7 @@ export class PlantillaBaseComponent implements AfterViewInit {
 
   ngAfterViewInit() {}
 
-  constructor(private busquedaService: BusquedaService) {}
+  constructor(private busquedaService: BusquedaService, private router: Router) {}
 
   onKeyDown(event: KeyboardEvent | MouseEvent){
     if((event instanceof KeyboardEvent && event.key === 'Enter') || event instanceof MouseEvent){
@@ -27,6 +28,12 @@ export class PlantillaBaseComponent implements AfterViewInit {
   }
   
   onSearch(valor: string){
-    this.busquedaService.actualizarBusqueda(valor);
+    if(valor!=''){
+      this.router.navigate(['/search']).then(() => {
+        this.busquedaService.actualizarBusqueda(valor);
+      });
+    }else{
+      this.router.navigate(['/']);
+    }
   }
 }
