@@ -36,4 +36,8 @@ export class PlantillaBaseComponent implements AfterViewInit {
       this.router.navigate(['/']);
     }
   }
+
+  resetInput(){
+    this.input.nativeElement.value = "";
+  }
 }

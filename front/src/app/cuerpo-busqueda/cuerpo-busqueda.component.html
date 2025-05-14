@@ -2,7 +2,7 @@
     <h4 class="text-white">Resultados de búsqueda para: "{{ terminoActual }}"</h4>
 
     <div *ngIf="cargando" class="text-white my-3">
-        <i class="fa fa-spinner fa-spin"></i> Buscando productos...
+        <i class="fa fa-spinner fa-spin fs-5 me-2"></i> <span class="fs-5">Buscando productos...</span>
     </div>
 
     <ng-container *ngIf="!cargando">

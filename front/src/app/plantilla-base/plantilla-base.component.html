@@ -1,6 +1,6 @@
 <nav id="navegacion" class="navbar navbar-expand-lg fw-bold">
   <div class="container-fluid">
-    <a class="navbar-brand w-50" [routerLink]="['']">
+    <a class="navbar-brand w-50" [routerLink]="['']" (click) = "resetInput()">
       <span class="fs-5 text-white">MULLI </span>
       <img id="logo" src="images/logo.png" alt="Logo" class="ms-4 img-fluid ms-auto">
       <span class="fs-5 text-white"> WIZARDS </span>
@@ -14,8 +14,8 @@
         <button (click) = "onKeyDown($event)" type="button" class="button-search bg-white rounded-end border border-light"><i class="fa-solid fa-magnifying-glass text-black p-2"></i></button>
       </div>
     </div>
-    <a [routerLink]="['/login']" class="upper-icon text-decoration-none"><i #myLink class="fa-solid fa-user fs-4"></i></a>
-    <a href="" class="upper-icon text-decoration-none"><i #myLink class="fa-solid fa-cart-shopping fs-4"></i></a>
+    <a [routerLink]="['/login']" class="upper-icon text-decoration-none" (click) = "resetInput()"><i #myLink class="fa-solid fa-user fs-4"></i></a>
+    <a href="" class="upper-icon text-decoration-none" (click) = "resetInput()"><i #myLink class="fa-solid fa-cart-shopping fs-4"></i></a>
   </div>
 </nav>
 <ul class="tcgs d-flex justify-content-around list-unstyled fw-bold fs-5 p-2">
