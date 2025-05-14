@@ -20,7 +20,7 @@ export class ProductosService {
 
   buscarProductos(termino: string): Observable<any[]> {
     return this.http.get<any[]>(`http://localhost:8000/api/productos`, {
-      params: { search: termino }
+      params: { nombre: termino }
     });
   }
 }

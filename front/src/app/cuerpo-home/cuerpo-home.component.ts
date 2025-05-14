@@ -44,10 +44,8 @@ export class CuerpoHomeComponent implements AfterViewInit, OnInit, OnDestroy {
 
   buscarProductos(termino: string) {
     this.terminoActual = termino.trim();
-    console.log(this.terminoActual);
     this.productosService.buscarProductos(this.terminoActual).subscribe((data) => {
       this.productos = data;
-      console.log(this.productos);
     });
   }
 

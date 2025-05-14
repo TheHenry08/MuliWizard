@@ -20,17 +20,11 @@ export class PlantillaBaseComponent implements AfterViewInit {
   constructor(private busquedaService: BusquedaService) {}
 
   onKeyDown(event: KeyboardEvent | MouseEvent){
-    let inputValue = this.input.nativeElement.value;
-    //Mock
-    // event.preventDefault();
-    // inputValue = "Black Lotus";
-    //-----
     if((event instanceof KeyboardEvent && event.key === 'Enter') || event instanceof MouseEvent){
+      let inputValue = this.input.nativeElement.value;
       this.onSearch(inputValue);
     }
-  
   }
-
   
   onSearch(valor: string){
     this.busquedaService.actualizarBusqueda(valor);
