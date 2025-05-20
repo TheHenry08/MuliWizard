@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -14,7 +15,7 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'name'     => 'required|string|max:255',
             'email'    => 'required|string|email|unique:users',
-            'password' => 'required|string|min:6|confirmed', // requiere confirmación
+            'password' => 'required|string|min:6|confirmed',
         ]);
 
         if ($validator->fails()) {
@@ -34,12 +35,21 @@ class AuthController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        $user = User::where('email', $credentials['email'])->first();
-
-        if (!$user || !Hash::check($credentials['password'], $user->password)) {
+        if (!Auth::attempt($credentials)) {
             return response()->json(['message' => 'Credenciales inválidas'], 401);
         }
 
-        return response()->json(['message' => 'Login exitoso', 'user' => $user], 200);
+        $request->session()->regenerate();
+
+        return response()->json(['message' => 'Login exitoso', 'user' => Auth::user()]);
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return response()->json(['message' => 'Logout exitoso']);
     }
 }

@@ -1,23 +1,33 @@
 import { Component } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { RouterModule, Router } from '@angular/router';
+import { AuthService } from '../auth.service'; // Asegúrate del path correcto
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule, HttpClientModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  error: string | null = null;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
@@ -25,16 +35,15 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
 
-      this.http.post('http://localhost:8000/api/login', { email, password }).subscribe({
-        next: (res) => console.log('✅ Login exitoso:', res),
-        error: (err) => {
-          console.error('❌ Error:', err);
-          if (err.status === 0) {
-            console.error('❌ CORS o servidor no responde');
-          } else if (err.status === 401) {
-            console.warn('⚠️ Credenciales inválidas');
-          }
-        }
+      this.authService.login(email, password).subscribe({
+        next: () => {
+          console.log('✅ Login correcto');
+          this.router.navigate(['/cuerpo-home']);
+        },
+        error: (err: any) => {
+          console.error('❌ Error de login', err);
+          console.log('Detalles del error:', err.error);
+        },
       });
     } else {
       this.loginForm.markAllAsTouched();

@@ -11,16 +11,18 @@ return new class extends Migration
      */
     public function up(): void
 {
-    Schema::create('productos', function (Blueprint $table) {
-        $table->id(); 
-        $table->string('nombre');
-        $table->enum('juego', ['Magic', 'Pokemon', 'One Piece', 'Lorcana', 'Star Wars', 'Yu Gi Oh']);
-        $table->integer('stock')->default(0);
-        $table->decimal('precio', 10, 2);
-        $table->enum('estado', ['Nueva', 'Usada - Excelente', 'Usada - Buena', 'Usada - Regular', 'Dañada']);
-        $table->timestamps(); // created_at y updated_at
-        $table->binary('imagen')->nullable(); // Blob
-    });
+    if (!Schema::hasTable('productos')) {
+        Schema::create('productos', function (Blueprint $table) {
+            $table->id(); 
+            $table->string('nombre');
+            $table->enum('juego', ['Magic', 'Pokemon', 'One Piece', 'Lorcana', 'Star Wars', 'Yu Gi Oh']);
+            $table->integer('stock')->default(0);
+            $table->decimal('precio', 10, 2);
+            $table->enum('estado', ['Nueva', 'Usada - Excelente', 'Usada - Buena', 'Usada - Regular', 'Dañada']);
+            $table->timestamps();
+            $table->binary('imagen')->nullable();
+        });
+    }
 }
 
     /**

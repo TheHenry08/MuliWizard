@@ -15,7 +15,8 @@ export const routes: Routes = [
       { path: 'login', component: LoginComponent },
       { path: 'registro', component: RegistroComponent },
       { path: 'detalle/:id', component: ProductoDetalleComponent },
-      { path: 'search', component: CuerpoBusquedaComponent}
+      { path: 'search', component: CuerpoBusquedaComponent},
+      { path: 'cuerpo-home', component: CuerpoHomeComponent}
     ]
   }
 ];
