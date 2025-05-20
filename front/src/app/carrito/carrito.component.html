@@ -1,0 +1,45 @@
+<div class="container my-5">
+    <h2 class="mb-4 text-white border-bottom border-3 border-white">🛒 TU CARRO MÁGICO</h2>
+  
+    <div *ngIf="carrito.length === 0" class="alert alert-info">
+      Esto está demasiado vacío... <a [routerLink]="['']" class="text-secondary me-2">¡Añade algo!</a> :D
+    </div>
+
+    <div *ngIf="carrito.length > 0">
+      <div class="table-responsive">
+        <table class="table table-bordered align-middle text-center">
+          <thead class="table-dark">
+            <tr>
+              <th>Producto</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+              <th>Subtotal</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of carrito">
+              <td>{{ item.nombre }}</td>
+              <td>{{ item.precio}} €</td>
+              <td>{{ item.cantidad }}</td>
+              <td>{{ (item.precio * item.cantidad)}} €</td>
+              <td>
+                <button class="btn btn-danger btn-sm" (click)="eliminar(item.id)">
+                  <i class="bi bi-trash"></i> Eliminar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <div class="d-flex justify-content-between align-items-center mt-4">
+        <h4 class="text-white">Total a pagar: <span class="text-success ms-2">{{ total}} € </span></h4>
+        <div>
+            <button class="btn btn-success me-3">Ir al pago</button>
+            <button class="btn btn-danger" (click)="limpiar()">Vaciar carrito</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

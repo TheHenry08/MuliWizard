@@ -56,7 +56,7 @@
                       <h6 class="text-secondary">{{ producto.expansion }}</h6>
                       <h5 class="card-title fw-bold">{{ producto.nombre }}</h5>
                       <p class="card-text">{{ producto.precio }} €</p>
-                      <button class="btn btn-card me-2"><i class="fa-solid fa-cart-plus"></i></button>
+                      <button (click) = "agregarAlCarrito(producto)" class="btn btn-card me-2"><i class="fa-solid fa-cart-plus"></i></button>
                       <button class="btn btn-card" (click)="redirigirDetalle(producto)">Ver detalles</button>
                     </div>
                   </div>

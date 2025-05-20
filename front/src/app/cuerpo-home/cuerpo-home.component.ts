@@ -7,7 +7,7 @@ import {
   Renderer2
 } from '@angular/core';
 import { ProductosService } from '../services/productos/productos.service';
-import { BusquedaService } from '../services/busqueda/busqueda.service';
+import { CarritoService } from '../services/carrito/carrito.service';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
@@ -24,9 +24,8 @@ export class CuerpoHomeComponent {
   private productosService = inject(ProductosService);
   terminoActual = '';
   productos: any[] = [];
-  private subBusqueda!: Subscription;
 
-  constructor(private router: Router, private busquedaService: BusquedaService) {
+  constructor(private router: Router, public carritoService: CarritoService) {
     this.productosService.getProductos().subscribe((data) => {
       this.productos = data;
     });
@@ -36,22 +35,14 @@ export class CuerpoHomeComponent {
     this.router.navigate(['/detalle', producto.id]);
   }
 
-  // ngOnInit() {
-  //   this.subBusqueda = this.busquedaService.terminoBusqueda$.subscribe((termino) => {
-  //     this.buscarProductos(termino);
-  //   });
-  //   this.buscarProductos('');
-  // } 
-
-  // buscarProductos(termino: string) {
-  //   this.terminoActual = termino.trim();
-  //   this.productosService.buscarProductos(this.terminoActual).subscribe((data) => {
-  //     this.productos = data;
-  //   });
-  // }
-
-  // ngOnDestroy() {
-  //   this.subBusqueda.unsubscribe();
-  // }
-
+  agregarAlCarrito(producto: any) {
+    console.log(producto);
+    this.carritoService.agregarProducto({
+      id: producto.id,
+      nombre: producto.nombre,
+      precio: producto.precio,
+      cantidad: 1 
+    });
+    console.log(this.carritoService);
+  }
 }
