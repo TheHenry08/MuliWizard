@@ -12,7 +12,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        // Middleware necesarios para Sanctum con sesiones
+        $middleware->append(\Illuminate\Cookie\Middleware\EncryptCookies::class);
+        $middleware->append(\Illuminate\Session\Middleware\StartSession::class);
+        $middleware->append(\Illuminate\View\Middleware\ShareErrorsFromSession::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
