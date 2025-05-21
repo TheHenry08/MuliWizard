@@ -2,7 +2,6 @@ import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { ChatSideComponent } from '../chat-side/chat-side.component'
-import { ChatSideComponent } from '../chat-side/chat-side.component';
 import { ProductosService } from '../services/productos/productos.service';
 import { BusquedaService } from '../services/busqueda/busqueda.service';
 import { CommonModule } from '@angular/common';
