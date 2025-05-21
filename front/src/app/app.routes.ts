@@ -6,6 +6,7 @@ import { CuerpoBusquedaComponent } from './cuerpo-busqueda/cuerpo-busqueda.compo
 import { ProductoDetalleComponent } from './producto-detalle/producto-detalle.component'
 import { Routes } from '@angular/router';
 import { CarritoComponent } from './carrito/carrito.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
 
 export const routes: Routes = [
   {
@@ -18,7 +19,8 @@ export const routes: Routes = [
       { path: 'detalle/:id', component: ProductoDetalleComponent },
       { path: 'search', component: CuerpoBusquedaComponent},
       { path: 'cuerpo-home', component: CuerpoHomeComponent},
-      { path: 'carrito', component: CarritoComponent}
+      { path: 'carrito', component: CarritoComponent},
+      { path: 'aboutus', component: AboutusComponent}
     ]
   }
 ];

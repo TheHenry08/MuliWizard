@@ -19,13 +19,10 @@
             class="fa-solid fa-magnifying-glass text-black p-2"></i></button>
       </div>
     </div>
-    <a [routerLink]="['/login']" class="upper-icon text-decoration-none" (click) = "resetInput()"><i #myLink class="fa-solid fa-user fs-4"></i></a>
-    <a [routerLink]="['/carrito']" class="upper-icon text-decoration-none" (click) = "resetInput()"><i #myLink class="fa-solid fa-cart-shopping fs-4"></i></a>
     <a [routerLink]="['/login']" class="upper-icon text-decoration-none" (click)="resetInput()">
       <i [ngClass]="isAuthenticated ? 'fa-solid fa-star fs-4 text-warning' : 'fa-solid fa-user fs-4'"></i>
     </a>
-    <a href="" class="upper-icon text-decoration-none" (click)="resetInput()"><i #myLink
-        class="fa-solid fa-cart-shopping fs-4"></i></a>
+    <a [routerLink]="['/carrito']" class="upper-icon text-decoration-none" (click) = "resetInput()"><i #myLink class="fa-solid fa-cart-shopping fs-4"></i></a>
   </div>
 </nav>
 <ul class="tcgs d-flex justify-content-around list-unstyled fw-bold fs-5 p-2">
@@ -51,16 +48,16 @@
 
       <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
         <h5 class="text-uppercase mb-4 font-weight-bold social fw-bold">About Us</h5>
-        <p><a href="#" class="footer-link text-white" style="text-decoration: none;">Aviso legal</a></p>
-        <p><a href="#" class="footer-link text-white" style="text-decoration: none;">Puntos de reunión</a></p>
-        <p><a href="#" class="footer-link text-white" style="text-decoration: none;">Quiénes somos</a></p>
+        <p><a [routerLink]="['/aboutus']" class="footer-link text-white" style="text-decoration: none;">Aviso legal</a></p>
+        <p><a [routerLink]="['/aboutus']" class="footer-link text-white" style="text-decoration: none;">Puntos de reunión</a></p>
+        <p><a [routerLink]="['/aboutus']" class="footer-link text-white" style="text-decoration: none;">Quiénes somos</a></p>
       </div>
 
       <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
         <h5 class="text-uppercase mb-4 font-weight-bold social fw-bold">Enlaces útiles</h5>
         <p><a href="#" class="footer-link text-white" style="text-decoration: none;">Tu cuenta</a></p>
-        <p><a href="#" class="footer-link text-white" style="text-decoration: none;">Ayuda</a></p>
-        <p><a href="#" class="footer-link text-white" style="text-decoration: none;">Soporte</a></p>
+        <p><a [routerLink]="['/aboutus']" class="footer-link text-white" style="text-decoration: none;">Ayuda</a></p>
+        <p><a [routerLink]="['/aboutus']" class="footer-link text-white" style="text-decoration: none;">Soporte</a></p>
       </div>
 
       <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
@@ -78,7 +75,7 @@
     <div class="row align-items-center">
       <div class="col-md-7 col-lg-8">
         <p>© 2025 Todos los derechos reservados:
-          <a href="index.html" class="text-primary" style="text-decoration: none;"><strong>
+          <a [routerLink]="['/aboutus']" class="text-primary" style="text-decoration: none;"><strong>
               MulliWizards.com</strong></a>
         </p>
       </div>
