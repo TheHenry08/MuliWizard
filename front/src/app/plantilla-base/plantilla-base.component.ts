@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { ChatSideComponent } from '../chat-side/chat-side.component'
@@ -15,7 +15,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './plantilla-base.component.html',
   styleUrl: './plantilla-base.component.css'
 })
-export class PlantillaBaseComponent implements AfterViewInit {
+export class PlantillaBaseComponent implements AfterViewInit, OnDestroy {
   @ViewChild('inputBusqueda') input!: ElementRef<HTMLInputElement>;
 
   isAuthenticated: boolean = false;
@@ -28,6 +28,7 @@ export class PlantillaBaseComponent implements AfterViewInit {
   ) {}
 
   ngAfterViewInit() {
+    // Suscribirse a los cambios de autenticación
     this.authSub = this.authService.user$.subscribe(user => {
       this.isAuthenticated = !!user;
     });
