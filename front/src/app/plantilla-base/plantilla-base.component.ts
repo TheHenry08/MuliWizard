@@ -94,5 +94,23 @@ export class PlantillaBaseComponent implements AfterViewInit, OnDestroy {
       toast.remove();
     }, { once: true });
   }
+  logOut(){
+    this.authService.logout().subscribe(() => {
+      this.borrarCookies(); // Solo borra cookies accesibles por JS
+      this.router.navigate(['/login']);
+    });
+    //window.location.reload();
+  }
+  borrarCookies() {
+    const cookies = document.cookie.split(";");
+  
+    cookies.forEach(cookie => {
+      const nombre = cookie.split("=")[0].trim();
+
+      document.cookie = nombre + "=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;";
+      document.cookie = nombre + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+      document.cookie = nombre + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + window.location.hostname + ";";
+    });
+  }
   
 }

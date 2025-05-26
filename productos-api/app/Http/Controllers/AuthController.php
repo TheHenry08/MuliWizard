@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Cookie;
 
 class AuthController extends Controller
 {
@@ -50,6 +51,8 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return response()->json(['message' => 'Logout exitoso']);
+        return response()->json(['message' => 'Logout exitoso'])
+        ->withCookie(Cookie::create('XSRF-TOKEN')->withExpires(0))
+        ->withCookie(Cookie::create('laravel_session')->withExpires(0));
     }
 }

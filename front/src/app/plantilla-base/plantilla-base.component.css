@@ -68,3 +68,8 @@
   .toast-container{
     margin-top: 15vh;
   }
+  .logout:hover{
+    background-color: rgba(30, 73, 201, 0.84);
+    cursor: pointer;
+    color: white;
+  }

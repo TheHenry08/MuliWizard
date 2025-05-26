@@ -20,9 +20,38 @@
             class="fa-solid fa-magnifying-glass text-black p-2"></i></button>
       </div>
     </div>
-    <a [routerLink]="['/login']" class="upper-icon text-decoration-none" (click)="resetInput()">
-      <i [ngClass]="isAuthenticated ? 'fa-solid fa-star fs-4 text-warning' : 'fa-solid fa-user fs-4'"></i>
-    </a>
+    <div *ngIf="isAuthenticated">
+      <div class="dropdown">
+        <button class="btn dropdown-toggle fs-5 me-4 p-0 d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <div class="rounded-circle overflow-hidden justify-content-center align-items-center border border-2 me-1" style="width: 40px; height: 40px;">
+            <img src="images/pp.webp" alt="Profile" class="w-100 h-100 object-fit-cover">
+          </div>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="logout dropdown-item" (click)="logOut()">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span class="ms-2">Cerrar sesión</span>
+          </a></li>
+          <li><a class="logout dropdown-item" [routerLink]="['/events']" >
+            <i class="fa-solid fa-flag"></i>
+            <span class="ms-2">Eventos</span>
+          </a></li>
+          <li><a class="dropdown-item disabled" href="#">
+            <i class="fa-solid fa-heart"></i>
+            <span class="ms-2">Mis favoritos</span>
+          </a></li>
+          <li><a class="dropdown-item disabled" href="#">
+            <i class="fa-solid fa-calendar-days"></i>
+            <span class="ms-2">Calendario</span>
+          </a></li>
+        </ul>
+      </div>
+    </div>
+    <div *ngIf="!isAuthenticated">
+      <a [routerLink]="['/login']" class="upper-icon text-decoration-none" (click)="resetInput()">
+        <i class= "fa-solid fa-user fs-4"></i>
+      </a>
+    </div>
     <a [routerLink]="isAuthenticated ? ['/carrito'] : '[/login]'" [ngClass]="isAuthenticated ? 'upper-icon text-decoration-none' : 'upper-icon text-decoration-none text-secondary'" (click) = "showAlert()">
       <i #myLink class="fa-solid fa-cart-shopping fs-4"></i>
     </a>

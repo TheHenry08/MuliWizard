@@ -7,6 +7,7 @@ import { ProductoDetalleComponent } from './producto-detalle/producto-detalle.co
 import { Routes } from '@angular/router';
 import { CarritoComponent } from './carrito/carrito.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
+import { EventosComponent } from './eventos/eventos.component';
 
 export const routes: Routes = [
   {
@@ -20,7 +21,8 @@ export const routes: Routes = [
       { path: 'search', component: CuerpoBusquedaComponent},
       { path: 'cuerpo-home', component: CuerpoHomeComponent},
       { path: 'carrito', component: CarritoComponent},
-      { path: 'aboutus', component: AboutusComponent}
+      { path: 'aboutus', component: AboutusComponent},
+      { path: 'events', component: EventosComponent}
     ]
   }
 ];

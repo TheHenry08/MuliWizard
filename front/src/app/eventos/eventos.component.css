@@ -1,0 +1,17 @@
+.option-container{
+    background-color: rgba(30, 73, 201, 0.42) !important
+}
+.option-container:hover{
+    cursor: pointer;
+    filter: brightness(70%);
+}
+.subdiv{
+
+}
+.subheader{
+    background: linear-gradient(45deg,rgb(255, 255, 255),rgb(87, 87, 87));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
