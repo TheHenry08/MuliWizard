@@ -56,7 +56,7 @@
                       <h6 class="text-secondary">{{ producto.expansion }}</h6>
                       <h5 class="card-title fw-bold">{{ producto.nombre }}</h5>
                       <p class="card-text">{{ producto.precio }} €</p>
-                      <button (click) = "agregarAlCarrito(producto)" class="btn btn-card me-2"><i class="fa-solid fa-cart-plus"></i></button>
+                      <button (click) = "agregarAlCarrito(producto)" [ngClass]="isAuthenticated ? 'btn btn-card me-2' : 'btn btn-card me-2 disabled'"><i class="fa-solid fa-cart-plus"></i></button>
                       <button class="btn btn-card" (click)="redirigirDetalle(producto)">Ver detalles</button>
                     </div>
                   </div>
@@ -86,7 +86,7 @@
                     <h6 class="text-secondary">{{ producto.expansion }}</h6>
                     <h5 class="card-title fw-bold">{{ producto.nombre }}</h5>
                     <p class="card-text fw-bold">{{ producto.precio }} €</p>
-                    <button class="btn btn-card me-2"><i class="fa-solid fa-cart-plus"></i></button>
+                    <button (click) = "agregarAlCarrito(producto)" [ngClass]="isAuthenticated ? 'btn btn-card me-2' : 'btn btn-card me-2 disabled'"><i class="fa-solid fa-cart-plus"></i></button>
                     <button class="btn btn-card" (click)="redirigirDetalle(producto)">Ver detalles</button>
                   </div>
                 </div>
@@ -97,32 +97,3 @@
       </div>
     </div>
   </div>
-
-<!--
-<div *ngIf="terminoActual !== ''" class="container my-5">
-  <h4 class="text-white">Resultados de búsqueda para: "{{ terminoActual }}"</h4>
-  <div *ngIf="productos.length > 0; else sinResultados">
-    <div *ngFor="let producto of productos" class="card mb-3">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img [src]="'images/logo.png'" [alt]="producto.nombre" class="img-fluid rounded-start card-img">
-        </div>
-        <div class="col-md-8">
-          <div [id]="producto.id" class="card-body">
-            <h6 class="text-secondary">{{ producto.expansion }}</h6>
-            <h5 class="card-title fw-bold">{{ producto.nombre }}</h5>
-            <p class="card-text fw-bold">{{ producto.precio }} €</p>
-            <button class="btn btn-card me-2"><i class="fa-solid fa-cart-plus"></i></button>
-            <button class="btn btn-card" (click)="redirigirDetalle(producto)">Ver detalles</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <ng-template #sinResultados>
-    <p class="fs-5 text-danger">No se encontraron resultados :(</p>
-  </ng-template>
-</div>
--->
-

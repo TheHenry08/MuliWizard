@@ -14,27 +14,71 @@ export interface CarritoItem {
 export class CarritoService {
   private carrito: CarritoItem[] = [];
   private carritoSubject = new BehaviorSubject<CarritoItem[]>([]);
+  private readonly CARRITO_KEY = 'cart';
 
   carrito$ = this.carritoSubject.asObservable();
 
-  agregarProducto(producto: CarritoItem) {
-    const item = this.carrito.find(p => p.id === producto.id);
-    if (item) {
-      item.cantidad += producto.cantidad;
-    } else {
-      this.carrito.push({ ...producto });
+  constructor() {
+    this.cargarCarritoInicial();
+  }
+
+  private cargarCarritoInicial(): void {
+    try {
+      const carritoData = localStorage.getItem(this.CARRITO_KEY);
+      if (carritoData) {
+        this.carrito = JSON.parse(carritoData);
+        this.carritoSubject.next(this.carrito);
+      }
+    } catch (error) {
+      console.error('Error al cargar el carrito:', error);
+      this.limpiarCarrito(); // Limpia datos corruptos
     }
-    this.carritoSubject.next(this.carrito);
   }
 
-  eliminarProducto(id: number) {
+  private guardarEnLocalStorage(): void {
+    localStorage.setItem(this.CARRITO_KEY, JSON.stringify(this.carrito));
+  }
+
+  agregarProducto(producto: CarritoItem): void {
+    try {
+      const cartData = localStorage.getItem("cart");
+      this.carrito = cartData ? JSON.parse(cartData) : [];
+      
+      const itemIndex = this.carrito.findIndex(p => p.id === producto.id);
+      
+      if (itemIndex > -1) {
+        this.carrito[itemIndex].cantidad += producto.cantidad;
+      } else {
+        this.carrito.push({ ...producto });
+      }
+      
+      this.carritoSubject.next([...this.carrito]);
+      localStorage.setItem("cart", JSON.stringify(this.carrito));
+      
+    } catch (error) {
+      console.error('Error al actualizar el carrito:', error);
+      // Opcional: puedes reiniciar el carrito si hay error
+      this.carrito = [];
+      localStorage.setItem("cart", JSON.stringify([]));
+    }
+  }
+
+  eliminarProducto(id: number): void {
     this.carrito = this.carrito.filter(p => p.id !== id);
-    this.carritoSubject.next(this.carrito);
+    this.actualizarEstado();
   }
 
-  limpiarCarrito() {
+  actualizarCantidad(id: number, nuevaCantidad: number): void {
+    const item = this.carrito.find(p => p.id === id);
+    if (item) {
+      item.cantidad = nuevaCantidad;
+      this.actualizarEstado();
+    }
+  }
+
+  limpiarCarrito(): void {
     this.carrito = [];
-    this.carritoSubject.next(this.carrito);
+    this.actualizarEstado();
   }
 
   obtenerTotal(): number {
@@ -43,5 +87,10 @@ export class CarritoService {
 
   obtenerCarrito(): CarritoItem[] {
     return [...this.carrito];
+  }
+
+  private actualizarEstado(): void {
+    this.carritoSubject.next([...this.carrito]);
+    this.guardarEnLocalStorage();
   }
 }

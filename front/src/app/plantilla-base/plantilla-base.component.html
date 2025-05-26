@@ -1,3 +1,4 @@
+<div class="toast-container position-fixed end-0 p-3" #alertContainer style="z-index: 1100;"></div>
 <nav id="navegacion" class="navbar navbar-expand-lg fw-bold">
   <div class="container-fluid">
     <a class="navbar-brand w-50" [routerLink]="['']" (click)="resetInput()">
@@ -22,7 +23,9 @@
     <a [routerLink]="['/login']" class="upper-icon text-decoration-none" (click)="resetInput()">
       <i [ngClass]="isAuthenticated ? 'fa-solid fa-star fs-4 text-warning' : 'fa-solid fa-user fs-4'"></i>
     </a>
-    <a [routerLink]="['/carrito']" class="upper-icon text-decoration-none" (click) = "resetInput()"><i #myLink class="fa-solid fa-cart-shopping fs-4"></i></a>
+    <a [routerLink]="isAuthenticated ? ['/carrito'] : '[/login]'" [ngClass]="isAuthenticated ? 'upper-icon text-decoration-none' : 'upper-icon text-decoration-none text-secondary'" (click) = "showAlert()">
+      <i #myLink class="fa-solid fa-cart-shopping fs-4"></i>
+    </a>
   </div>
 </nav>
 <ul class="tcgs d-flex justify-content-around list-unstyled fw-bold fs-5 p-2">
