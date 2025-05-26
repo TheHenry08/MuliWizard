@@ -1,4 +1,6 @@
 .option-container{
+    position: relative;
+    transition-duration: 0.4s;
     background-color: rgba(30, 73, 201, 0.42) !important
 }
 .option-container:hover{

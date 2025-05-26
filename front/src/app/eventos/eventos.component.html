@@ -1,18 +1,22 @@
 <div class="text-center pt-4 text-white">
-    <h1 class ="text-uppercase">Bienvenido al manejador de eventos</h1>
+    <h1 class="text-uppercase">Bienvenido al manejador de eventos</h1>
     <span class="h4">¡Elige una opción y empieza a disfrutar de unas partidas a la par que conoces gente nueva!</span>
-</div>
-<div class="container text-center mt-4">
+  </div>
+  
+  <div class="container text-center mt-4">
     <div class="row gap-3 p-3">
-        <div class="option-container col bg-danger p-3 rounded fw-bold fs-3 border border-3 text-white">
+      <a [routerLink]="['/events/events-view']" class="option-container col py-2 rounded fw-bold fs-3 border border-3 text-white text-decoration-none">
         <i class="fa-solid fa-eye fs-2"></i><br>
         CONSULTAR EVENTOS
-        <h5 class="subheader text-secondary">Busca y consulta los eventos de otras personas por tu zona</h5>
-        </div>
-        <div class="option-container col bg-primary p-3 rounded fw-bold fs-3 border border-3 text-white">
+        <h6 class="subheader text-secondary">Busca y consulta los eventos de otras personas por tu zona</h6>
+      </a>
+      <a [routerLink]="['/events/event-handler']" class="option-container col py-2 rounded fw-bold fs-3 border border-3 text-white text-decoration-none">
         <i class="fa-solid fa-plus fs-2"></i><br>
-        CREAR O EDITAR UN EVENTO 
-        <h5 class="subheader text-secondary">Crea un evento propio en el lugar que desees</h5>
-        </div>
+        CREAR O EDITAR UN EVENTO
+        <h6 class="subheader text-secondary">Crea un evento propio en el lugar que desees</h6>
+      </a>
     </div>
-</div>
+  </div>
+  
+  <router-outlet></router-outlet>
+  

@@ -8,6 +8,8 @@ import { Routes } from '@angular/router';
 import { CarritoComponent } from './carrito/carrito.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { EventosComponent } from './eventos/eventos.component';
+import { CrearEditarComponent } from './eventos/crear-editar/crear-editar.component';
+import { ConsultarComponent } from './eventos/consultar/consultar.component';
 
 export const routes: Routes = [
   {
@@ -22,7 +24,12 @@ export const routes: Routes = [
       { path: 'cuerpo-home', component: CuerpoHomeComponent},
       { path: 'carrito', component: CarritoComponent},
       { path: 'aboutus', component: AboutusComponent},
-      { path: 'events', component: EventosComponent}
+      { path: 'events', 
+        component: EventosComponent, 
+        children: [ 
+        { path: 'event-handler', component: CrearEditarComponent },
+        { path: 'events-view', component: ConsultarComponent }
+      ]}
     ]
   }
 ];

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-eventos',
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './eventos.component.html',
   styleUrl: './eventos.component.css'
 })
