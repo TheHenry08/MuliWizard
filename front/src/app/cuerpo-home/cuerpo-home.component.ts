@@ -35,7 +35,9 @@ export class CuerpoHomeComponent implements AfterViewInit {
     private authService: AuthService
   ) {
     this.productosService.getProductos().subscribe((data) => {
-      this.productos = data;
+      console.log('Respuesta productos:', data);
+      // this.productos = data;
+      this.productos = Array.isArray(data) ? data : data.data ?? [];
     });
   }
 
