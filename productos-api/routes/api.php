@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EventoController;
 
 // Auth
 Route::post('/register', [AuthController::class, 'register']);
@@ -18,4 +19,8 @@ Route::post('/productos', [ProductoController::class, 'store']);
 Route::put('/productos/{id}', [ProductoController::class, 'update']);
 Route::delete('/productos/{id}', [ProductoController::class, 'destroy']);
 
-//Carrito
+//Eventos
+Route::post('/eventos', [EventoController::class, 'store']);
+Route::get('/eventos', [EventoController::class, 'index']);
+Route::delete('/eventos/{id}', [EventoController::class, 'destroy']);
+Route::patch('/eventos/{id}', [EventoController::class, 'update']);
