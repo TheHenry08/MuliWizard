@@ -1,1 +1,77 @@
 <i class="fa-solid fa-message text-white ms-3 mb-4 fs-3"></i>
+<div class="chat-container">
+  <!-- Header del Chat -->
+  <div class="chat-header">
+    <div class="d-flex justify-content-between align-items-center">
+      <h5 class="mb-0">
+        <i class="bi bi-chat-dots"></i> Chat General
+      </h5>
+      <div class="chat-status">
+        <span class="badge" [ngClass]="isConnected ? 'bg-success' : 'bg-danger'">
+          <i class="bi" [ngClass]="isConnected ? 'bi-circle-fill' : 'bi-circle'"></i>
+          {{ isConnected ? 'Conectado' : 'Desconectado' }}
+        </span>
+        <span class="badge bg-secondary ms-2" *ngIf="onlineUsers > 0">
+          <i class="bi bi-people"></i> {{ onlineUsers }} en línea
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mensajes -->
+  <div class="chat-messages" #messagesContainer>
+    <div *ngIf="!isConnected && currentUser" class="text-center text-muted py-3">
+      <i class="bi bi-wifi-off"></i>
+      <p>Conectando al chat...</p>
+    </div>
+
+    <div *ngIf="!currentUser" class="text-center text-muted py-3">
+      <i class="bi bi-person-x"></i>
+      <p>Debes iniciar sesión para usar el chat</p>
+    </div>
+
+    <div *ngFor="let message of messages; trackBy: trackByMessageId" 
+         class="message-item" 
+         [ngClass]="{'own-message': isOwnMessage(message), 'other-message': !isOwnMessage(message)}">
+      
+      <div class="message-bubble">
+        <div class="message-header" *ngIf="!isOwnMessage(message)">
+          <small class="text-muted fw-bold">{{ message.username }}</small>
+        </div>
+        <div class="message-content">
+          {{ message.message }}
+        </div>
+        <div class="message-time">
+          <small class="text-muted">{{ formatTime(message.timestamp) }}</small>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="messages.length === 0 && isConnected" class="text-center text-muted py-3">
+      <i class="bi bi-chat"></i>
+      <p>¡Sé el primero en enviar un mensaje!</p>
+    </div>
+  </div>
+
+  <!-- Input para escribir mensajes -->
+  <div class="chat-input" *ngIf="currentUser && isConnected">
+    <div class="input-group">
+      <input 
+        type="text" 
+        class="form-control" 
+        placeholder="Escribe tu mensaje..." 
+        [(ngModel)]="newMessage"
+        (keypress)="onKeyPress($event)"
+        #messageInput
+        maxlength="500">
+      <button 
+        class="btn btn-primary" 
+        type="button" 
+        (click)="sendMessage()"
+        [disabled]="!newMessage.trim()">
+        <i class="bi bi-send"></i>
+      </button>
+    </div>
+    <small class="text-muted">Presiona Enter para enviar</small>
+  </div>
+</div>

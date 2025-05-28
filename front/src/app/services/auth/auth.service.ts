@@ -57,7 +57,6 @@ export class AuthService {
           withCredentials: true 
         }).pipe(
           tap((res: any) => {
-            // Guardar usuario y token en localStorage
             this.saveUserToStorage(res.user, res.token);
             this.userSubject.next(res.user);
           }),
@@ -82,7 +81,6 @@ export class AuthService {
           withCredentials: true 
         }).pipe(
           tap((res: any) => {
-            // Si el registro devuelve un token y usuario, guardarlos
             if (res.user && res.token) {
               this.saveUserToStorage(res.user, res.token);
               this.userSubject.next(res.user);
@@ -109,7 +107,6 @@ export class AuthService {
         this.userSubject.next(null);
       }),
       catchError((error) => {
-        // Incluso si falla la petición al servidor, limpiar localmente
         console.error('Logout error:', error);
         this.clearStorage();
         this.userSubject.next(null);
@@ -138,7 +135,6 @@ export class AuthService {
       }),
       catchError((error) => {
         console.error('Auth check error:', error);
-        // Si el token no es válido, limpiar storage
         this.clearStorage();
         this.userSubject.next(null);
         return of(null);

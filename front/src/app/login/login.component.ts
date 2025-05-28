@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
-import { AuthService } from '../services/auth/auth.service'; // Asegúrate del path correcto
+import { AuthService } from '../services/auth/auth.service';
 
 @Component({
   selector: 'app-login',

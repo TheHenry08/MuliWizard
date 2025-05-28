@@ -4,7 +4,7 @@ import {
   ElementRef,
   AfterViewInit,
   ViewChild,
-  Renderer2
+  Renderer2,
 } from '@angular/core';
 import { ProductosService } from '../services/productos/productos.service';
 import { CarritoService } from '../services/carrito/carrito.service';
@@ -21,23 +21,26 @@ declare var bootstrap: any;
   templateUrl: './cuerpo-home.component.html',
   styleUrl: './cuerpo-home.component.css',
 })
-export class CuerpoHomeComponent implements AfterViewInit{
+export class CuerpoHomeComponent implements AfterViewInit {
   private productosService = inject(ProductosService);
   terminoActual = '';
   productos: any[] = [];
 
-   isAuthenticated: boolean = false;
+  isAuthenticated: boolean = false;
   private authSub?: Subscription;
- 
-  constructor(private router: Router, public carritoService: CarritoService, private authService: AuthService) {
+
+  constructor(
+    private router: Router,
+    public carritoService: CarritoService,
+    private authService: AuthService
+  ) {
     this.productosService.getProductos().subscribe((data) => {
       this.productos = data;
     });
   }
 
   ngAfterViewInit() {
-    // Suscribirse a los cambios de autenticación
-    this.authSub = this.authService.user$.subscribe(user => {
+    this.authSub = this.authService.user$.subscribe((user) => {
       this.isAuthenticated = !!user;
     });
   }
@@ -52,7 +55,7 @@ export class CuerpoHomeComponent implements AfterViewInit{
       id: producto.id,
       nombre: producto.nombre,
       precio: producto.precio,
-      cantidad: 1 
+      cantidad: 1,
     });
     console.log(this.carritoService);
   }

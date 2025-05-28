@@ -1,7 +1,6 @@
 import { Component, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
-import { ChatSideComponent } from '../chat-side/chat-side.component'
 import { ProductosService } from '../services/productos/productos.service';
 import { BusquedaService } from '../services/busqueda/busqueda.service';
 import { CommonModule } from '@angular/common';
@@ -11,7 +10,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-plantilla-base',
   standalone: true,
-  imports: [RouterModule, ChatSideComponent, CommonModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './plantilla-base.component.html',
   styleUrl: './plantilla-base.component.css'
 })

@@ -31,7 +31,7 @@ export class CarritoService {
       }
     } catch (error) {
       console.error('Error al cargar el carrito:', error);
-      this.limpiarCarrito(); // Limpia datos corruptos
+      this.limpiarCarrito();
     }
   }
 
@@ -57,7 +57,6 @@ export class CarritoService {
       
     } catch (error) {
       console.error('Error al actualizar el carrito:', error);
-      // Opcional: puedes reiniciar el carrito si hay error
       this.carrito = [];
       localStorage.setItem("cart", JSON.stringify([]));
     }

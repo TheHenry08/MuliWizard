@@ -10,6 +10,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { EventosComponent } from './eventos/eventos.component';
 import { CrearEditarComponent } from './eventos/crear-editar/crear-editar.component';
 import { ConsultarComponent } from './eventos/consultar/consultar.component';
+import { ChatSideComponent } from './chat-side/chat-side.component';
 
 export const routes: Routes = [
   {
@@ -24,6 +25,7 @@ export const routes: Routes = [
       { path: 'cuerpo-home', component: CuerpoHomeComponent},
       { path: 'carrito', component: CarritoComponent},
       { path: 'aboutus', component: AboutusComponent},
+      { path: 'chat-side', component: ChatSideComponent},
       { path: 'events', 
         component: EventosComponent, 
         children: [ 
