@@ -4,39 +4,49 @@ namespace App\Http\Controllers;
 
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ProductoController extends Controller
 {
-
     public function index(Request $request)
     {
-        $query = Producto::query();
+        try {
+            $query = Producto::query();
 
-        if ($request->has('nombre') && !empty($request->input('nombre'))) {
-            $query->where('nombre', 'like', '%' . $request->input('nombre') . '%');
+            if ($request->filled('nombre')) {
+                $query->where('nombre', 'like', '%' . $request->nombre . '%');
+            }
+
+            if ($request->filled('juego')) {
+                $query->where('juego', $request->juego);
+            }
+
+            if ($request->filled('estado')) {
+                $query->where('estado', $request->estado);
+            }
+
+            if ($request->filled('precio_min')) {
+                $query->where('precio', '>=', $request->precio_min);
+            }
+
+            if ($request->filled('precio_max')) {
+                $query->where('precio', '<=', $request->precio_max);
+            }
+
+            $productos = $query->get();
+
+            return response()->json([
+                'message' => 'Productos obtenidos correctamente',
+                'data' => $productos
+            ], 200);
+        } catch (\Exception $e) {
+            Log::error('Error al obtener productos: ' . $e->getMessage());
+            return response()->json([
+                'message' => 'Error al obtener productos'
+            ], 500);
         }
-
-        if ($request->has('juego') && !empty($request->input('juego'))) {
-            $query->where('juego', $request->input('juego'));
-        }
-
-        if ($request->has('estado') && !empty($request->input('estado'))) {
-            $query->where('estado', $request->input('estado'));
-        }
-
-        if ($request->has('precio_min')) {
-            $query->where('precio', '>=', $request->input('precio_min'));
-        }
-
-        if ($request->has('precio_max')) {
-            $query->where('precio', '<=', $request->input('precio_max'));
-        }
-
-        $productos = $query->get();
-        return response()->json($productos);
     }
 
-    // Obtener producto por ID
     public function show($id)
     {
         $producto = Producto::find($id);
@@ -45,13 +55,15 @@ class ProductoController extends Controller
             return response()->json(['message' => 'Producto no encontrado'], 404);
         }
 
-        return response()->json($producto);
+        return response()->json([
+            'message' => 'Producto obtenido correctamente',
+            'data' => $producto
+        ], 200);
     }
 
-    // Crear producto
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'nombre' => 'required|string|max:255',
             'juego' => 'required|in:Magic,Pokemon,One Piece,Lorcana,Star Wars,Yu Gi Oh',
             'stock' => 'required|integer|min:0',
@@ -60,18 +72,27 @@ class ProductoController extends Controller
             'imagen' => 'nullable|file|mimes:jpg,jpeg,png,gif|max:2048'
         ]);
 
-        $producto = new Producto($request->except('imagen'));
+        try {
+            $producto = new Producto($request->except('imagen'));
 
-        if ($request->hasFile('imagen')) {
-            $producto->imagen = file_get_contents($request->file('imagen')->getRealPath());
+            if ($request->hasFile('imagen')) {
+                $producto->imagen = file_get_contents($request->file('imagen')->getRealPath());
+            }
+
+            $producto->save();
+
+            return response()->json([
+                'message' => 'Producto creado correctamente',
+                'data' => $producto
+            ], 201);
+        } catch (\Exception $e) {
+            Log::error('Error al crear producto: ' . $e->getMessage());
+            return response()->json([
+                'message' => 'Error al crear el producto'
+            ], 500);
         }
-
-        $producto->save();
-
-        return response()->json($producto, 201);
     }
 
-    // Actualizar producto
     public function update(Request $request, $id)
     {
         $producto = Producto::find($id);
@@ -89,18 +110,27 @@ class ProductoController extends Controller
             'imagen' => 'nullable|file|mimes:jpg,jpeg,png,gif|max:2048'
         ]);
 
-        $producto->fill($request->except('imagen'));
+        try {
+            $producto->fill($request->except('imagen'));
 
-        if ($request->hasFile('imagen')) {
-            $producto->imagen = file_get_contents($request->file('imagen')->getRealPath());
+            if ($request->hasFile('imagen')) {
+                $producto->imagen = file_get_contents($request->file('imagen')->getRealPath());
+            }
+
+            $producto->save();
+
+            return response()->json([
+                'message' => 'Producto actualizado correctamente',
+                'data' => $producto
+            ], 200);
+        } catch (\Exception $e) {
+            Log::error('Error al actualizar producto: ' . $e->getMessage());
+            return response()->json([
+                'message' => 'Error al actualizar el producto'
+            ], 500);
         }
-
-        $producto->save();
-
-        return response()->json($producto);
     }
 
-    // Eliminar producto
     public function destroy($id)
     {
         $producto = Producto::find($id);
@@ -109,8 +139,17 @@ class ProductoController extends Controller
             return response()->json(['message' => 'Producto no encontrado'], 404);
         }
 
-        $producto->delete();
+        try {
+            $producto->delete();
 
-        return response()->json(['message' => 'Producto eliminado'], 200);
+            return response()->json([
+                'message' => 'Producto eliminado correctamente'
+            ], 200);
+        } catch (\Exception $e) {
+            Log::error('Error al eliminar producto: ' . $e->getMessage());
+            return response()->json([
+                'message' => 'Error al eliminar el producto'
+            ], 500);
+        }
     }
 }
