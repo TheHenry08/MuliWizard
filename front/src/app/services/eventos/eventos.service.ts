@@ -17,8 +17,8 @@ export class EventosService {
     return this.http.post(this.apiUrl, data);
   }
 
-  removeEventos(data: any): Observable<any> {
-    return this.http.delete(this.apiUrl, data);
+  removeEventos(eventId: any): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${eventId}`);
   }
 
   updateEventos(data: any): Observable<any> {

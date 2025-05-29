@@ -11,12 +11,12 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <div class="d-flex me-5">
+      <div class="d-flex">
         <input #inputBusqueda (keydown)="onKeyDown($event)"
-          class="rounded-0 rounded-start p-1 ms-5 custom-input border border-end-0 border-light form-control"
+          class="rounded-0 rounded-start custom-input border border-end-0 border-light form-control ms-5"
           type="search" placeholder=" Buscador mágico" aria-label="Search">
         <button (click)="onKeyDown($event)" type="button"
-          class="button-search bg-white rounded-end border border-light"><i
+          class="button-search bg-white rounded-end border border-light me-4"><i
             class="fa-solid fa-magnifying-glass text-black p-2"></i></button>
       </div>
     </div>

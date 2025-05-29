@@ -11,7 +11,15 @@
               
                 <div class="mb-3">  
                   <label for="juego" class="form-label fs-5">Juego</label>
-                  <input type="text" id="juego" class="form-control" placeholder="Introduce el nombre del juego">
+                  <select id="juego" class="form-control" style="width: 100%">
+                    <option value="" data-icon="bi bi-chevron-down">--Selecciona una opción--</option>
+                    <option value="Magic" data-icon="bi bi-arrow-right-short">Magic: The Gathering</option>
+                    <option value="Pokemon" data-icon="bi bi-arrow-right-short">Pokemon</option>
+                    <option value="One Piece" data-icon="bi bi-arrow-right-short">One Piece</option>
+                    <option value="Star Wars" data-icon="bi bi-arrow-right-short">Star Wars</option>
+                    <option value="Lorcana" data-icon="bi bi-arrow-right-short">Lorcana</option>
+                    <option value="Yu Gi Oh" data-icon="bi bi-arrow-right-short">Yu Gi Oh</option>
+                  </select>
                 </div>
 
                 <div class="mb-3">  
@@ -34,13 +42,17 @@
               
                 <ng-container *ngIf="eventos && eventos.length > 0; else noEventos">
                   <ng-container *ngFor="let evento of eventos | slice:0:10">
-                    <div class="card mb-3">
+                    <div class="mb-3">
                       <div class="row g-0 w-100">
                         <div class="col-md-8">
-                          <div [id]="evento.id" class="card-body">
-                            <h6 class="text-secondary">Dirección: {{ evento.direccion }}</h6>
-                            <h5 class="card-title fw-bold">Juego: {{ evento.juego }}</h5>
-                            <p class="card-text">Fecha: {{ evento.fecha }}</p>
+                          <div [id]="evento.id" class="card-body d-flex justify-content-around">
+                            <a>
+                              <h6 class="text-secondary">Dirección: {{ evento.direccion }}</h6>
+                              <h5 class="card-text fw-bold">Juego: {{ evento.juego }}</h5>
+                              <h5 class="card-text">Fecha: {{ evento.fecha }}</h5>
+                              <h5 class="card-text">{{ evento.descripcion }}</h5>
+                            </a>
+                            <button [id]="evento.id" class="fw-bold" (click)="removeEvento(evento.id)">X</button>
                           </div>
                         </div>
                       </div>
@@ -49,7 +61,7 @@
                 </ng-container>
             
                 <ng-template #noEventos>
-                  <span class="text-center px-5 mx-4">
+                  <span class="text-center mx-2">
                     Upss... Demasiado vacío. <br> ¡Intenta crear un evento nuevo!
                   </span>
                 </ng-template>

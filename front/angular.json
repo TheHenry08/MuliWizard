@@ -27,9 +27,14 @@
               }
             ],
             "styles": [
+              "select2/dist/css/select2.min.css",
+              "bootstrap-icons/font/bootstrap-icons.css",
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "jquery/dist/jquery.min.js",
+              "select2/dist/js/select2.min.js"
+            ],
             "server": "src/main.server.ts",
             "outputMode": "server",
             "ssr": {

@@ -21,13 +21,30 @@ export class ProductoDetalleComponent implements OnInit{
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.productosService.getProductos().subscribe((productos) => {
-        this.producto = productos.find((p: any) => p.id == id);
-        console.log('Producto encontrado:', this.producto); // <-- Agrega esto
-      });
+      this.productosService.getProductoPorId(id).subscribe(
+        (response) => {
+          this.producto = response.data; // accedemos al "data" del JSON
+          console.log('Producto encontrado:', this.producto);
+        },
+        (error) => {
+          console.error('Error al obtener el producto:', error);
+        }
+      );
     } else {
       console.warn('No se encontró ID en la URL');
     }
   }
+  
+  // ngOnInit(): void {
+  //   const id = this.route.snapshot.paramMap.get('id');
+  //   if (id) {
+  //     this.productosService.getProductos().subscribe((productos) => {
+  //       this.producto = productos.find((p: any) => p.id == id);
+  //       console.log('Producto encontrado:', this.producto); // <-- Agrega esto
+  //     });
+  //   } else {
+  //     console.warn('No se encontró ID en la URL');
+  //   }
+  // }
   
 }
