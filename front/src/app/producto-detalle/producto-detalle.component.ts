@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { ProductosService } from '../services/productos/productos.service';
+import { CarritoService } from '../services/carrito/carrito.service';
 
 @Component({
   selector: 'app-producto-detalle',
@@ -15,7 +16,8 @@ export class ProductoDetalleComponent implements OnInit{
 
   constructor(
     private route: ActivatedRoute,
-    private productosService: ProductosService
+    private productosService: ProductosService,
+    private carritoService: CarritoService
   ) {}
 
   ngOnInit(): void {
@@ -35,16 +37,14 @@ export class ProductoDetalleComponent implements OnInit{
     }
   }
   
-  // ngOnInit(): void {
-  //   const id = this.route.snapshot.paramMap.get('id');
-  //   if (id) {
-  //     this.productosService.getProductos().subscribe((productos) => {
-  //       this.producto = productos.find((p: any) => p.id == id);
-  //       console.log('Producto encontrado:', this.producto); // <-- Agrega esto
-  //     });
-  //   } else {
-  //     console.warn('No se encontró ID en la URL');
-  //   }
-  // }
-  
+  agregarAlCarrito(producto: any) {
+    console.log(producto);
+    this.carritoService.agregarProducto({
+      id: producto.id,
+      nombre: producto.nombre,
+      precio: producto.precio,
+      cantidad: 1,
+    });
+    console.log(this.carritoService);
+  }
 }

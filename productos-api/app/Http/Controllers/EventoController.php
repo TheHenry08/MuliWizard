@@ -45,12 +45,16 @@ class EventoController extends Controller
         $eventoId = $request->query('id');
 
         if ($eventoId) {
-            $eventos = Evento::where('id', $eventoId)->get();
-        } else {
-            $eventos = Evento::all();
+            $evento = Evento::where('id', $eventoId)->first();
+
+            if (!$evento) {
+                return response()->json(['error' => 'Evento no encontrado'], 404);
+            }
+
+            return response()->json($evento);
         }
 
-        return response()->json($eventos);
+        return response()->json(['error' => 'ID de evento no proporcionado'], 400);
     }
 
 

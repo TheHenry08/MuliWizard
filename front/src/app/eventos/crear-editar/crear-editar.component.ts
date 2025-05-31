@@ -238,7 +238,7 @@ export class CrearEditarComponent implements OnInit, AfterViewInit {
     this.eventosService.getEvento(id_evento).subscribe(
       (evento) => {
         if (evento && evento.length > 0) {
-          const datosEvento = evento[0];
+          const datosEvento = evento.find((u: { id: any; }) => u.id == id_evento);
           this.eventoForm.patchValue({
             direccion: datosEvento.direccion,
             juego: datosEvento.juego,
@@ -261,7 +261,7 @@ export class CrearEditarComponent implements OnInit, AfterViewInit {
     );
   } 
 
-actualizarEvento(event: Event) {
+actualizarEvento() {
 
   if (this.eventoForm.valid && this.eventoId !== null) {
     const datos = {
@@ -280,6 +280,7 @@ actualizarEvento(event: Event) {
         this.eventoForm.reset();
         this.eventoId = null;
         $('#juego').val('').trigger('change');
+        this.cancelarEdicion();
       },
       error: (error) => {
         console.error("Error al actualizar el evento:", error);
@@ -291,6 +292,8 @@ actualizarEvento(event: Event) {
 
   cancelarEdicion() {
     this.eventoForm.reset();
+    this.eventoForm.value.juego='';
+    $('#juego').val('').trigger('change');
     this.isEditMode = false;
   }
 }

@@ -29,10 +29,9 @@
             
               <div class="mb-3">
                 <label for="descripcion" class="form-label fs-5">Descripción</label>
-                <textarea id="descripcion" formControlName="desc" class="form-control" rows="3" placeholder="Describe el evento..."></textarea>
+                <textarea id="descripcion" formControlName="desc" class="form-control" rows="3" placeholder="Describe el evento brevemente..."></textarea>
               </div>
-            
-              <!-- Botón para crear un evento -->
+
               <button
               type="submit"
               class="btn btn-primary"
@@ -42,17 +41,15 @@
               Crear evento
               </button>
 
-              <!-- Botón para actualizar un evento -->
               <button
               type="submit"
-              class="btn btn-success"
+              class="btn btn-success me-2"
               *ngIf="isEditMode"
-              (click)="actualizarEvento($event)"
+              (click)="actualizarEvento()"
               >
               Actualizar evento
               </button>
 
-              <!-- Botón para cancelar la edición -->
               <button
               type="button"
               class="btn btn-secondary"
@@ -62,46 +59,15 @@
               Cancelar
               </button>
             </form>
-            
-            <!-- <form class="p-4 border rounded bg-light my-3 ms-5">
-                <div class="mb-3">
-                  <label for="direccion" class="form-label fs-5">Dirección</label>
-                  <input #direccion type="text" id="direccion" formControlName="direccion" class="form-control" placeholder="Introduce la dirección">
-                </div>
-              
-                <div class="mb-3">  
-                  <label for="juego" class="form-label fs-5">Juego</label>
-                  <select #juego id="juego" class="form-control" style="width: 100%">
-                    <option value="" data-icon="bi bi-chevron-down">--Selecciona una opción--</option>
-                    <option value="Magic" data-icon="bi bi-arrow-right-short">Magic: The Gathering</option>
-                    <option value="Pokemon" data-icon="bi bi-arrow-right-short">Pokemon</option>
-                    <option value="One Piece" data-icon="bi bi-arrow-right-short">One Piece</option>
-                    <option value="Star Wars" data-icon="bi bi-arrow-right-short">Star Wars</option>
-                    <option value="Lorcana" data-icon="bi bi-arrow-right-short">Lorcana</option>
-                    <option value="Yu Gi Oh" data-icon="bi bi-arrow-right-short">Yu Gi Oh</option>
-                  </select>
-                </div>
-
-                <div class="mb-3">  
-                  <label for="fecha" class="form-label fs-5">Fecha</label>
-                  <input #fecha type="date" id="fecha" class="form-control">
-                </div>
-              
-                <div class="mb-3">
-                  <label for="descripcion" class="form-label fs-5">Descripción</label>
-                  <textarea #desc id="descripcion" class="form-control" rows="3" placeholder="Describe el evento..."></textarea>
-                </div>
-                <button #formButton (click)="enviarForm($event)" class="btn btn-primary">Crear evento</button>
-            </form>     -->
           </div>
           <div class="text-center option-container col py-2 rounded fw-bold fs-3 border border-3 text-white">
             MIS EVENTOS 
-            <hr>
+            <hr class="border border-2">
             <div class="overflow-auto" style="max-height: 70vh;">
               <div class="fs-4 h-75 flex-column">
               
                 <ng-container *ngIf="eventos && eventos.length > 0; else noEventos">
-                  <ng-container *ngFor="let evento of eventos | slice:0:10">
+                  <ng-container *ngFor="let evento of eventos | slice:0:10; let isLast = last">
                     <div class="mb-3">
                       <div [id]="evento.id" class="d-flex justify-content-around">
                         <a>
@@ -111,11 +77,12 @@
                           <h5 class="card-text">{{ evento.descripcion }}</h5>
                         </a>
                         <div>
-                          <button [id]="evento.id" class="fw-bold" (click)="removeEvento(evento.id)">X</button>
-                          <button [id]="evento.id" (click)="getEvento(evento.id)"><i class="fa-solid fa-pen"></i></button>
+                          <button [id]="evento.id" (click)="getEvento(evento.id)" class="btn btn-primary"><i class="fa-solid fa-pen"></i></button>
+                          <button [id]="evento.id" class="delete-button fw-bold btn btn-danger ms-3" (click)="removeEvento(evento.id)">X</button>
                         </div>
                       </div>
                     </div>
+                    <hr *ngIf="!isLast">
                   </ng-container>
                 </ng-container>
             

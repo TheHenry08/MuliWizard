@@ -26,6 +26,6 @@ export class EventosService {
   }
 
   updateEventos(id: number, data: any): Observable<any> {
-    return this.http.patch(`${this.apiUrl}/${id}`, data);
-  }
+  return this.http.patch(`${this.apiUrl}/${id}`, data);
+}
 }
