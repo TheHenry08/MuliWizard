@@ -26,13 +26,26 @@ class EventoController extends Controller
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
-    // Obtener evento por id
+    // Obtener eventos por id del usuario
     public function index(Request $request)
     {
         $organizadorId = $request->query('organizador_id');
 
         if ($organizadorId) {
             $eventos = Evento::where('organizador_id', $organizadorId)->get();
+        } else {
+            $eventos = Evento::all();
+        }
+
+        return response()->json($eventos);
+    }
+    //Obtener los datos del evento seleccionado
+    public function indexEvent(Request $request)
+    {
+        $eventoId = $request->query('id');
+
+        if ($eventoId) {
+            $eventos = Evento::where('id', $eventoId)->get();
         } else {
             $eventos = Evento::all();
         }

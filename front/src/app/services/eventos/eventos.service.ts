@@ -13,6 +13,10 @@ export class EventosService {
     return this.http.get(this.apiUrl, { params: { organizador_id: userId } });
   }
 
+  getEvento(eventId: any): Observable<any> {
+    return this.http.get(this.apiUrl, { params: { id: eventId } });
+  }
+
   addEventos(data: any): Observable<any> {
     return this.http.post(this.apiUrl, data);
   }
@@ -21,7 +25,7 @@ export class EventosService {
     return this.http.delete(`${this.apiUrl}/${eventId}`);
   }
 
-  updateEventos(data: any): Observable<any> {
-    return this.http.patch(this.apiUrl, data);
+  updateEventos(id: number, data: any): Observable<any> {
+    return this.http.patch(`${this.apiUrl}/${id}`, data);
   }
 }

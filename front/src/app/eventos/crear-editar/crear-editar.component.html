@@ -3,15 +3,75 @@
     <div class="container">
         <div class="row gap-5 p-3">
           <div class="option-container col py-2 rounded fw-bold">
-            <form class="p-4 border rounded bg-light my-3 ms-5">
+            <form [formGroup]="eventoForm" class="p-4 border rounded bg-light my-3 ms-5">
+              <div class="mb-3">
+                <label for="direccion" class="form-label fs-5">Dirección</label>
+                <input type="text" id="direccion" formControlName="direccion" class="form-control" placeholder="Introduce la dirección">
+              </div>
+            
+              <div class="mb-3">
+                <label for="juego" class="form-label fs-5">Juego</label>
+                <select id="juego" formControlName="juego" class="form-control" style="width: 100%">
+                  <option value="">--Selecciona una opción--</option>
+                  <option value="Magic">Magic: The Gathering</option>
+                  <option value="Pokemon">Pokemon</option>
+                  <option value="One Piece">One Piece</option>
+                  <option value="Star Wars">Star Wars</option>
+                  <option value="Lorcana">Lorcana</option>
+                  <option value="Yu Gi Oh">Yu Gi Oh</option>
+                </select>
+              </div>
+            
+              <div class="mb-3">
+                <label for="fecha" class="form-label fs-5">Fecha</label>
+                <input type="date" id="fecha" formControlName="fecha" class="form-control">
+              </div>
+            
+              <div class="mb-3">
+                <label for="descripcion" class="form-label fs-5">Descripción</label>
+                <textarea id="descripcion" formControlName="desc" class="form-control" rows="3" placeholder="Describe el evento..."></textarea>
+              </div>
+            
+              <!-- Botón para crear un evento -->
+              <button
+              type="submit"
+              class="btn btn-primary"
+              *ngIf="!isEditMode"
+              (click)="enviarForm($event)"
+              >
+              Crear evento
+              </button>
+
+              <!-- Botón para actualizar un evento -->
+              <button
+              type="submit"
+              class="btn btn-success"
+              *ngIf="isEditMode"
+              (click)="actualizarEvento($event)"
+              >
+              Actualizar evento
+              </button>
+
+              <!-- Botón para cancelar la edición -->
+              <button
+              type="button"
+              class="btn btn-secondary"
+              *ngIf="isEditMode"
+              (click)="cancelarEdicion()"
+              >
+              Cancelar
+              </button>
+            </form>
+            
+            <!-- <form class="p-4 border rounded bg-light my-3 ms-5">
                 <div class="mb-3">
                   <label for="direccion" class="form-label fs-5">Dirección</label>
-                  <input type="text" id="direccion" formControlName="direccion" class="form-control" placeholder="Introduce la dirección">
+                  <input #direccion type="text" id="direccion" formControlName="direccion" class="form-control" placeholder="Introduce la dirección">
                 </div>
               
                 <div class="mb-3">  
                   <label for="juego" class="form-label fs-5">Juego</label>
-                  <select id="juego" class="form-control" style="width: 100%">
+                  <select #juego id="juego" class="form-control" style="width: 100%">
                     <option value="" data-icon="bi bi-chevron-down">--Selecciona una opción--</option>
                     <option value="Magic" data-icon="bi bi-arrow-right-short">Magic: The Gathering</option>
                     <option value="Pokemon" data-icon="bi bi-arrow-right-short">Pokemon</option>
@@ -24,15 +84,15 @@
 
                 <div class="mb-3">  
                   <label for="fecha" class="form-label fs-5">Fecha</label>
-                  <input type="date" id="fecha" class="form-control">
+                  <input #fecha type="date" id="fecha" class="form-control">
                 </div>
               
                 <div class="mb-3">
                   <label for="descripcion" class="form-label fs-5">Descripción</label>
-                  <textarea id="descripcion" class="form-control" rows="3" placeholder="Describe el evento..."></textarea>
+                  <textarea #desc id="descripcion" class="form-control" rows="3" placeholder="Describe el evento..."></textarea>
                 </div>
-                <button (click)="enviarForm($event)" class="btn btn-primary">Crear evento</button>
-            </form>    
+                <button #formButton (click)="enviarForm($event)" class="btn btn-primary">Crear evento</button>
+            </form>     -->
           </div>
           <div class="text-center option-container col py-2 rounded fw-bold fs-3 border border-3 text-white">
             MIS EVENTOS 
@@ -43,17 +103,16 @@
                 <ng-container *ngIf="eventos && eventos.length > 0; else noEventos">
                   <ng-container *ngFor="let evento of eventos | slice:0:10">
                     <div class="mb-3">
-                      <div class="row g-0 w-100">
-                        <div class="col-md-8">
-                          <div [id]="evento.id" class="card-body d-flex justify-content-around">
-                            <a>
-                              <h6 class="text-secondary">Dirección: {{ evento.direccion }}</h6>
-                              <h5 class="card-text fw-bold">Juego: {{ evento.juego }}</h5>
-                              <h5 class="card-text">Fecha: {{ evento.fecha }}</h5>
-                              <h5 class="card-text">{{ evento.descripcion }}</h5>
-                            </a>
-                            <button [id]="evento.id" class="fw-bold" (click)="removeEvento(evento.id)">X</button>
-                          </div>
+                      <div [id]="evento.id" class="d-flex justify-content-around">
+                        <a>
+                          <h6 class="text-secondary">Dirección: {{ evento.direccion }}</h6>
+                          <h5 class="card-text fw-bold">Juego: {{ evento.juego }}</h5>
+                          <h5 class="card-text">Fecha: {{ evento.fecha }}</h5>
+                          <h5 class="card-text">{{ evento.descripcion }}</h5>
+                        </a>
+                        <div>
+                          <button [id]="evento.id" class="fw-bold" (click)="removeEvento(evento.id)">X</button>
+                          <button [id]="evento.id" (click)="getEvento(evento.id)"><i class="fa-solid fa-pen"></i></button>
                         </div>
                       </div>
                     </div>
