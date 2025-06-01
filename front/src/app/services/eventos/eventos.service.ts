@@ -9,12 +9,17 @@ export class EventosService {
   private http = inject(HttpClient);
   private apiUrl = 'http://localhost:8000/api/eventos';
 
-  getEventos(userId: any): Observable<any> {
+  getEventosUsuario(userId: any): Observable<any> {
     return this.http.get(this.apiUrl, { params: { organizador_id: userId } });
   }
 
   getEvento(eventId: any): Observable<any> {
     return this.http.get(this.apiUrl, { params: { id: eventId } });
+  }
+
+  getAllEventos(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/all-events`);
+    
   }
 
   addEventos(data: any): Observable<any> {

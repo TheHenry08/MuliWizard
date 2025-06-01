@@ -27,7 +27,7 @@ class EventoController extends Controller
         }
     }
     // Obtener eventos por id del usuario
-    public function index(Request $request)
+    public function indexUserEvent(Request $request)
     {
         $organizadorId = $request->query('organizador_id');
 
@@ -37,6 +37,13 @@ class EventoController extends Controller
             $eventos = Evento::all();
         }
 
+        return response()->json($eventos);
+    }
+    //Obtener todos los eventos
+    public function index(Request $request)
+    {
+        
+        $eventos = Evento::all();
         return response()->json($eventos);
     }
     //Obtener los datos del evento seleccionado

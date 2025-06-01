@@ -21,7 +21,8 @@ Route::delete('/productos/{id}', [ProductoController::class, 'destroy']);
 
 //Eventos
 Route::post('/eventos', [EventoController::class, 'store']);
-Route::get('/eventos', [EventoController::class, 'index']);
+Route::get('/eventos', [EventoController::class, 'indexUserEvent']);
 Route::get('/eventos/filtrados', [EventoController::class, 'indexEvent']);
+Route::get('/eventos/all-events', [EventoController::class, 'index']);
 Route::delete('/eventos/{id}', [EventoController::class, 'destroy']);
 Route::patch('/eventos/{id}', [EventoController::class, 'update']);

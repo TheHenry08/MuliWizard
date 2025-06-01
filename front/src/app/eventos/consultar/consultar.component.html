@@ -1,2 +1,34 @@
-<hr class="border border-2">
-<p>consultar works!</p>
+<div class="text-center option-container col py-2 rounded fw-bold fs-3 border border-3 text-white mb-5 mx-4">
+    EVENTOS DISPONIBLES
+    <hr class="border border-2">
+    <div class="overflow-auto" style="max-height: 70vh;">
+      <div class="fs-4 h-75 flex-column">
+      
+        <ng-container *ngIf="eventos && eventos.length > 0; else noEventos">
+          <ng-container *ngFor="let evento of eventos | slice:0:10; let isLast = last">
+            <div class="mb-3">
+              <div [id]="evento.id" class="d-flex justify-content-around">
+                <div class="rounded-circle overflow-hidden justify-content-center align-items-center border border-2 me-1" style="width: 40px; height: 40px;">
+                    <img src="images/pp.webp" alt="Profile" class="w-100 h-100 object-fit-cover">
+                </div>
+                
+                  <h6 class="text-secondary">Dirección: {{ evento.direccion }}</h6>
+                  <h5 class="card-text fw-bold">Juego: {{ evento.juego }}</h5>
+                  <h5 class="card-text">Fecha: {{ evento.fecha }}</h5>
+                  <h5 class="card-text">{{ evento.descripcion }}</h5>
+                
+              </div>
+            </div>
+            <hr *ngIf="!isLast">
+          </ng-container>
+        </ng-container>
+    
+        <ng-template #noEventos>
+          <span class="text-center mx-2">
+            Upss... Demasiado vacío. <br> ¡No hay eventos disponibles!
+          </span>
+        </ng-template>
+    
+      </div>
+    </div>
+  </div>          
