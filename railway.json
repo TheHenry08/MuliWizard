@@ -1,0 +1,8 @@
+{
+    "services": [
+      {
+        "name": "laravel-api",
+        "rootDirectory": "productos-api"
+      }
+    ]
+  }
