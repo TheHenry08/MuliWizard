@@ -8,7 +8,8 @@ import { RespuestaApiProductos } from '../../interfaces/producto.interface';
 })
 export class ProductosService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:8000/api/productos';
+  private apiUrl = 'https://api-mulliwizards-production.up.railway.app/api/productos';
+  // private apiUrl = 'http://localhost:8000/api/productos';
 
   getProductos(): Observable<any> {
     return this.http.get(this.apiUrl);

@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class EventosService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:8000/api/eventos';
+  private apiUrl = 'https://api-mulliwizards-production.up.railway.app/api/eventos';
+  //private apiUrl = 'http://localhost:8000/api/eventos';
 
   getEventosUsuario(userId: any): Observable<any> {
     return this.http.get(this.apiUrl, { params: { organizador_id: userId } });

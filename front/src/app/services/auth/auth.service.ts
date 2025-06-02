@@ -5,7 +5,8 @@ import { switchMap, map, catchError } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private apiUrl = 'http://localhost:8000';
+  private apiUrl = 'https://api-mulliwizards-production.up.railway.app';
+  //private apiUrl = 'http://localhost:8000';
   private userSubject = new BehaviorSubject<any>(null);
   user$ = this.userSubject.asObservable();
   private readonly USER_KEY = 'user';
